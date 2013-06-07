@@ -1,0 +1,78 @@
+﻿@model CrumbCRM.Web.Models.SearchViewModel
+@{
+    ViewBag.Title = "Search Results";
+}
+
+<h1>Search Results</h1>
+
+
+<div class="width-wide left">
+
+
+    <div class="stream">
+        <div class="stream-head">
+
+            <form class="inline-search">
+                <input type="text" value="" placeholder="Filter results" />
+            </form>
+
+        </div>
+        <div class="stream-content">
+
+            @foreach (var item in Model.Leads)
+            {
+                <div class="item">
+                    <div class="left">
+                        <form class="inline hidden nodisplay">
+                            <input type="checkbox" />
+                        </form>
+                        <span class="txt-large no-bold"><a href="@Url.Action("View", "Lead", new { id = item.ID })" class="tooltip" title="View/Add Notes">@item.FirstName @item.LastName</a></span>
+                        <span class="lighter">@item.CompanyName</span>
+                        <span class="edit hidden"><a href="/lead/edit/@item.ID"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
+                    </div>
+                    <!-- /left -->
+
+                    <div class="right">
+                        
+                    </div>
+
+                </div> <!-- /item -->
+            }
+            @foreach (var item in Model.Sales)
+            {
+                <div class="item">
+                    <div class="left">
+                        <form class="inline hidden nodisplay">
+                            <input type="checkbox" />
+                        </form>
+                        <span class="txt-large no-bold"><a href="@Url.Action("View", "Sale", new { id = item.ID })" class="tooltip" title="View/Add Notes">@item.Name</a></span>
+                        <span class="lighter">@item.Company.CompanyName</span>
+                        <span class="edit hidden"><a href="/sale/edit/@item.ID"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
+                    </div>
+                    <!-- /left -->
+
+                    <div class="right">
+                        
+                    </div>
+
+                </div> <!-- /item -->
+            }
+
+
+        </div>
+        <!-- /stream-content -->
+    </div>
+    <!-- /stream -->
+</div>
+<!-- /content-right -->
+
+<div class="width-side right">
+    <div class="box no-mobile dash-tasks">
+        <h4>Tasks</h4>
+        @{Html.RenderAction("DisplaySideTasks", "Task", new { });}
+    </div>
+  
+</div>
+<!-- /content-left -->
+
+

@@ -1,0 +1,226 @@
+
+.icon {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+}
+.icon-small {
+	width: 12px;
+	height: 12px;
+	display: inline-block;
+}
+/* light */
+.icon-dashboard {
+	background: url('/content/images/icons/large/light/home2.png') center center no-repeat;
+}
+.icon-leads {
+	background: url('/content/images/icons/large/light/target.png') center center no-repeat;
+}
+.icon-contact {
+	background: url('/content/images/icons/large/light/user3.png') center center no-repeat;
+}
+.icon-deals {
+	background: url('/content/images/icons/large/light/tag.png') center center no-repeat;
+}
+.icon-tasks {
+	background: url('/content/images/icons/large/light/checkmark.png') center center no-repeat;
+}
+.icon-email {
+	background: url('/content/images/icons/large/light/mail2.png') center center no-repeat;
+}
+.icon-reports {
+	background: url('/content/images/icons/large/light/bars.png') center center no-repeat;
+}
+.icon-settings {
+	background: url('/content/images/icons/large/light/cog.png') center center no-repeat;
+}
+.icon-edit {
+	background: url('/content/images/icons/large/light/quill.png') center center no-repeat;
+}
+.icon-company {
+	background: url('/content/images/icons/large/light/office.png') center center no-repeat;
+}
+.icon-add {
+	background: url('/content/images/icons/large/light/plus.png') center center no-repeat;
+}
+.icon-drag {
+	background: url('/content/images/icons/large/light/redo2.png') center center no-repeat;
+}
+.icon-remove {
+	background: url('/content/images/icons/large/light/remove2.png') center center no-repeat;
+}
+.icon-quote {
+	background: url('/content/images/icons/large/light/calculate.png') center center no-repeat;
+}
+.icon-invoice {
+	background: url('/content/images/icons/large/light/file4.png') center center no-repeat;
+}
+.icon-download {
+	background: url('/content/images/icons/large/light/download.png') center center no-repeat;
+}
+/* active */
+.icon-active.icon-dashboard {
+	background: url('/content/images/icons/large/active/home2.png') center center no-repeat;
+}
+.icon-active.icon-leads {
+	background: url('/content/images/icons/large/active/target.png') center center no-repeat;
+}
+.icon-active.icon-contact {
+	background: url('/content/images/icons/large/active/user3.png') center center no-repeat;
+}
+.icon-active.icon-deals {
+	background: url('/content/images/icons/large/active/tag.png') center center no-repeat;
+}
+.icon-active.icon-tasks {
+	background: url('/content/images/icons/large/active/checkmark.png') center center no-repeat;
+}
+.icon-active.icon-email {
+	background: url('/content/images/icons/large/active/mail2.png') center center no-repeat;
+}
+.icon-active.icon-reports {
+	background: url('/content/images/icons/large/active/bars.png') center center no-repeat;
+}
+.icon-active.icon-settings {
+	background: url('/content/images/icons/large/active/cog.png') center center no-repeat;
+}
+.icon-active.icon-edit {
+	background: url('/content/images/icons/large/active/quill.png') center center no-repeat;
+}
+.icon-active.icon-company {
+	background: url('/content/images/icons/large/active/office.png') center center no-repeat;
+}
+.icon-active.icon-add {
+	background: url('/content/images/icons/large/active/plus.png') center center no-repeat;
+}
+.icon-active.icon-drag {
+	background: url('/content/images/icons/large/active/redo2.png') center center no-repeat;
+}
+.icon-active.icon-remove {
+	background: url('/content/images/icons/large/active/remove2.png') center center no-repeat;
+}
+.icon-active.icon-quote {
+	background: url('/content/images/icons/large/active/calculate.png') center center no-repeat;
+}
+.icon-active.icon-invoice {
+	background: url('/content/images/icons/large/active/file4.png') center center no-repeat;
+}
+.icon-active.icon-download {
+	background: url('/content/images/icons/large/active/download.png') center center no-repeat;
+}
+/* small, light */
+.icon-small.icon-dashboard {
+	background: url('/content/images/icons/small/light/home2.png') center center no-repeat;
+}
+.icon-small.icon-leads {
+	background: url('/content/images/icons/small/light/target.png') center center no-repeat;
+}
+.icon-small.icon-contact {
+	background: url('/content/images/icons/small/light/user3.png') center center no-repeat;
+}
+.icon-small.icon-deals {
+	background: url('/content/images/icons/small/light/tag.png') center center no-repeat;
+}
+.icon-small.icon-tasks {
+	background: url('/content/images/icons/small/light/checkmark.png') center center no-repeat;
+}
+.icon-small.icon-email {
+	background: url('/content/images/icons/small/light/mail2.png') center center no-repeat;
+}
+.icon-small.icon-reports {
+	background: url('/content/images/icons/small/light/bars.png') center center no-repeat;
+}
+.icon-small.icon-settings {
+	background: url('/content/images/icons/small/light/cog.png') center center no-repeat;
+}
+.icon-small.icon-edit {
+	background: url('/content/images/icons/small/light/quill.png') center center no-repeat;
+}
+.icon-small.icon-company {
+	background: url('/content/images/icons/small/light/office.png') center center no-repeat;
+}
+.icon-small.icon-add {
+	background: url('/content/images/icons/small/light/plus.png') center center no-repeat;
+}
+.icon-small.icon-drag {
+	background: url('/content/images/icons/small/light/redo2.png') center center no-repeat;
+}
+.icon-small.icon-remove {
+	background: url('/content/images/icons/small/light/remove2.png') center center no-repeat;
+}
+.icon-small.icon-quote {
+	background: url('/content/images/icons/small/light/calculate.png') center center no-repeat;
+}
+.icon-small.icon-invoice {
+	background: url('/content/images/icons/small/light/file4.png') center center no-repeat;
+}
+.icon-small.icon-download {
+	background: url('/content/images/icons/small/light/download.png') center center no-repeat;
+}
+
+/* small, dark */
+.icon-dark.icon-small.icon-dashboard {
+	background: url('/content/images/icons/small/dark/home2.png') center center no-repeat;
+}
+.icon-dark.icon-small.icon-leads {
+	background: url('/content/images/icons/small/dark/target.png') center center no-repeat;
+}
+.icon-dark.icon-small.icon-contact {
+	background: url('/content/images/icons/small/dark/user3.png') center center no-repeat;
+}
+.icon-dark.icon-small.icon-deals {
+	background: url('/content/images/icons/small/dark/tag.png') center center no-repeat;
+}
+.icon-dark.icon-small.icon-tasks {
+	background: url('/content/images/icons/small/dark/checkmark.png') center center no-repeat;
+}
+.icon-dark.icon-small.icon-email {
+	background: url('/content/images/icons/small/dark/mail2.png') center center no-repeat;
+}
+.icon-dark.icon-small.icon-reports {
+	background: url('/content/images/icons/small/dark/bars.png') center center no-repeat;
+}
+.icon-dark.icon-small.icon-settings {
+	background: url('/content/images/icons/small/dark/cog.png') center center no-repeat;
+}
+.icon-dark.icon-small.icon-edit {
+	background: url('/content/images/icons/small/dark/quill.png') center center no-repeat;
+}
+.icon-dark.icon-small.icon-company {
+	background: url('/content/images/icons/small/dark/office.png') center center no-repeat;
+}
+.icon-dark.icon-small.icon-add {
+	background: url('/content/images/icons/small/dark/plus.png') center center no-repeat;
+}
+.icon-dark.icon-small.icon-drag {
+	background: url('/content/images/icons/small/dark/redo2.png') center center no-repeat;
+}
+.icon-dark.icon-small.icon-exit {
+	background: url('/content/images/icons/small/dark/exit.png') center center no-repeat;
+}
+.icon-dark.icon-small.icon-users {
+	background: url('/content/images/icons/small/dark/users.png') center center no-repeat;
+}
+/* dark, TODO complete */
+.icon-dark.icon-remove {
+	background: url('/content/images/icons/large/dark/remove2.png') center center no-repeat;
+}
+.icon-dark.icon-quote {
+	background: url('/content/images/icons/large/dark/calculate.png') center center no-repeat;
+}
+.icon-dark.icon-invoice {
+	background: url('/content/images/icons/large/dark/file4.png') center center no-repeat;
+}
+.icon-dark.icon-download {
+	background: url('/content/images/icons/large/dark/download.png') center center no-repeat;
+}
+.icon-dark.icon-contact{
+	background: url('/content/images/icons/large/dark/user3.png') center center no-repeat;
+}
+.icon-dark.icon-company{
+	background: url('/content/images/icons/large/dark/office.png') center center no-repeat;
+}
+
+.icon-smaller {
+    width:8px;
+    height:8px;
+}

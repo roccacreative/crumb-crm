@@ -1,0 +1,56 @@
+﻿@model CrumbCRM.Invoice
+@{
+    ViewBag.Title = "Add";
+}
+
+<h1>Add Invoice<a href="/invoice" class="btn-back">Back</a></h1>
+<div class="width-wide left">
+@using (Html.BeginForm("Add", "Invoice", FormMethod.Post, new { @class = "box"}))
+{
+    @Html.HiddenFor(c => c.ID)
+
+    <div class="form-row">
+        <label>Title</label>
+        @Html.TextBoxFor(c => c.Title, null, new { @class = "input-large required", placeholder = "Title" })
+    </div>
+    <div class="form-row">
+        <label>Description</label>
+        @Html.TextAreaFor(c => c.Description, new { @class = "input-large"})
+    </div>
+    <div class="form-row">
+        <label>Invoice Number</label>
+        @Html.TextBoxFor(c => c.InvoiceNumber, null, new { @class = "input-large required", placeholder = "Invoice Number" })
+    </div>
+    <div class="form-row">
+        <label>Purchase Order</label>
+        @Html.TextBoxFor(c => c.PurchaseOrder, null, new { @class = "input-large required", placeholder = "Purchase Order" })
+    </div>
+    <div class="form-row">
+        <label>Sub Value</label>
+        @Html.TextBoxFor(c => c.SubValue, null, new { @class = "input-large required", placeholder = "Sub Value" })
+    </div>
+    <div class="form-row">
+        <label>Total Value</label>
+        @Html.TextBoxFor(c => c.TotalValue, null, new { @class = "input-large required", placeholder = "Total Value" })
+    </div>    
+    <div class="form-row">
+        <label>Exclude VAT</label>
+        @Html.CheckBoxFor(c => c.ExcludingVAT, null)
+    </div>
+    
+
+
+    <div class="actions">
+        <input type="submit" value="Add Invoice" class="btn btn-primary"  />
+    </div>
+}
+		</div> <!-- /content-right -->
+
+
+<div class="width-side right no-mobile">
+    <div class="box no-mobile dash-tasks">
+        <h4>Tasks</h4>
+        @{Html.RenderAction("DisplaySideTasks", "Task", new { });}
+    </div>
+</div>
+<!-- /width-side -->

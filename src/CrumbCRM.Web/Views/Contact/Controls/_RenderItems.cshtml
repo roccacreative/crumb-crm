@@ -1,0 +1,38 @@
+﻿@model List<CrumbCRM.Contact>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <div class="item" data-id="@item.ID">
+        <div class="left">
+            <form class="inline hidden">
+                <input type="checkbox" />
+            </form>
+            @{
+    if (item.Type == CrumbCRM.ContactType.Company)
+    {
+                <span class="txt-large no-bold"><i class="icon icon-dark icon-company icon-small"></i><a href="/note/view/@item.ID?type=@((int)CrumbCRM.NoteType.Contact)" class="tooltip" title="View/Add Notes">@item.CompanyName</a></span>
+    }
+    else
+    {
+                <span class="txt-large no-bold"><i class="icon icon-dark icon-contact icon-small"></i><a href="/note/view/@item.ID?type=@((int)CrumbCRM.NoteType.Contact)" class="tooltip" title="View/Add Notes">@item.FirstName @item.LastName @(item.CompanyID.HasValue ? "(" + item.Company.CompanyName + ")" : string.Empty) </a></span>
+    } 
+            }
+            <span class="edit hidden"><a href="/contact/edit/@item.ID"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
+            <span class="delete hidden"><a href="/contact/delete/@item.ID"><i class="icon-small icon-dark icon-remove"></i>delete</a></span>
+        </div>
+        <!-- /left -->
+
+        <div class="right">
+            <div class="date">@item.CreatedDate.ToString("dd MMM yyyy")</div>
+        </div>
+        <!-- /right -->
+    </div> <!-- /item -->
+}
+@if (ViewBag.Next != null)
+{
+    <div class="content-loading" data-next="@ViewBag.Next">
+        <img src="/Content/Images/ajax-loader.gif" />
+    </div>
+}

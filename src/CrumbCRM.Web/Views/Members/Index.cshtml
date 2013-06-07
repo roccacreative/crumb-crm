@@ -1,0 +1,66 @@
+﻿@model CrumbCRM.Web.Models.MembersViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Members</h1>
+
+<div class="width-wide left">
+
+    @{
+        if (ViewBag.Message != null)
+        {
+        <p class="msg msg-success">
+            @ViewBag.message
+            <a href="javascript:;" class="msg-close right">close</a>
+        </p>
+        }
+    }
+    <div class="stream">
+        <div class="stream-head">
+            <form>
+                <input type="checkbox" />
+            </form>
+            <a href="javascript:;" data-action="/contact/delete/" class="btn btn-check-delete nodisplay btn-secondary"><i class="icon icon-small icon-light icon-remove"></i>delete selected</a>
+
+            <a href="/members/add" class="btn btn-primary"><i class="icon-small icon-add"></i>add member</a>
+
+            <form class="inline-search" id="stream-search">
+                <input type="text" value="" placeholder="Search members" />
+            </form>
+        </div>
+        <div class="stream-content">
+            @foreach (var item in Model.Users)
+            {
+                <div class="item" data-id="@item.UserId">
+                    <div class="left">
+                        <form class="inline hidden">
+                            <input type="checkbox" />
+                        </form>
+                        <span class="txt-large no-bold"><a href="@Url.Action("View", "Members", new { id = item.Username, type = (int)CrumbCRM.NoteType.Contact })">@item.Username</a></span>
+                        <span class="edit hidden"><a href="@Url.Action("Edit", "Members", new { id = item.Username })"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
+                        <span class="delete hidden"><a href="@Url.Action("Delete", "Members", new { id = item.Username })"><i class="icon-small icon-dark icon-remove"></i>delete</a></span>
+                    </div>
+                    <!-- /left -->
+
+                    <div class="right">
+                        <div class="date">@item.CreateDate.Value.ToString("dd MMM yyyy")</div>
+                    </div>
+                    <!-- /right -->
+                </div> <!-- /item -->
+            }
+        </div>
+        <!-- /stream-content -->
+    </div>
+    <!-- /stream -->
+</div>
+<!-- /content-right -->
+
+
+<div class="width-side right no-mobile">
+    <div class="box no-mobile dash-tasks">
+        <h4>Tasks</h4>
+        @{Html.RenderAction("DisplaySideTasks", "Task", new { });}
+    </div>
+</div>
+<!-- /width-side -->

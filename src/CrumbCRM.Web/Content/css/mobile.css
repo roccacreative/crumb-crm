@@ -1,0 +1,183 @@
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-device-width : 480px) {
+    /* Styles */
+
+    body {
+    }
+
+    .no-mobile, form label, .logo, .stream-head .inline-search, .header-search, .stream-head .right, .stream-head form {
+        display: none;
+    }
+
+    html, body, #content, .width-side.left, .width-wide, .width-middle, .inner {
+        width: 100% !important;
+        padding:0 !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        margin: 0 !important;
+    }
+    header nav a {
+        padding: 10px 11px;
+    }
+
+    #content h1 {
+        /*padding-left: 15px;*/
+    }
+
+    .box {
+        border-radius: 0;
+    }
+
+    .actions {
+        padding-left: 0;
+    }
+
+    .item .right.hidden {
+        visibility: visible;
+    }
+
+    .item .right span {
+        margin-bottom: 6px;
+    }
+
+    .item .left input {
+        display: none;
+    }
+
+
+
+    form .input-small {
+        width: 28%;
+    }
+
+    form .input-medium {
+        width: 45%;
+    }
+
+    form .input-large {
+        width: 95%;
+    }
+
+    form select.input-large {
+        width: 100%;
+    }
+
+
+    .trends,.donut-dash {
+        width: 100%;
+        clear:both;
+        margin: 10px auto 0 auto;
+    }
+
+    .no-desktop {
+        display: inline-block;
+    }
+
+    .show-nav {
+        width: 30px;
+        height: 30px;
+        background: url('/content/images/m-icon-menu.png') no-repeat;
+        margin-left: 10px;
+        padding: 0 2px;
+    }
+ 
+    header > a {
+        float: none;
+        display: inline-block;
+    }
+
+ 
+        header li, header li a {
+            float: left;
+            background: #444;
+            width: 100% !important;
+        }
+    header .inner {
+        max-height: 100%;
+        width:100%;
+        margin:0;
+    }
+    header > .inner > .nav > li:nth-child(1) a {
+        border-top: 1px solid #111;
+    }
+    header > .inner > .nav > li a {
+        border-top: 1px solid #222;
+        border-left: 0;
+        border-right:0;
+    }
+    header .inner > .right {
+        float: left;
+        width: 100%;
+        display:none;
+    }
+    header .sub-nav,header .nav {
+        display:none;
+        float: left;
+        position:static;
+        width:100%;
+    }
+    .sub-nav {
+        border-bottom: 1px solid #ddd;
+    }
+    .sub-nav a {
+            font-size: 7px !important;
+            text-transform: lowercase
+    }
+        .sub-nav li a {
+	        padding: 10px 20px !important;
+        }
+    .drop-nav > a {
+        display: none !important;
+    }
+
+
+    .btn {
+        -webkit-appearance: none;
+    }
+
+
+    .select-stages-nav {
+        width: 100%;
+        margin: 0 auto 10px auto;
+        display: block;
+        -webkit-appearance: none;
+        border:0;
+        border-left: 4px solid #555;
+        background:#ccc;
+        border-radius: 0px;
+        padding:10px 5px;
+    }
+    .logo {
+        display: none;
+    }
+    #content {
+        /*
+        margin-left: 10px;
+        margin-right: 10px;
+            */ 
+        margin: 0 !important;
+        padding-right:10px;
+        overflow:hidden;
+    }
+
+    .stream-content .item {
+    }
+
+    .item > .right {
+        display: block;
+        float: left;
+        margin-top:30px;
+        margin-bottom:0;
+        width: 100%;
+        clear:both;
+    }
+        .item > .right span {
+            padding: 0;
+        }
+        .item > .right .btn {
+            float: right;
+        }
+
+    .item .state {
+    }
+}

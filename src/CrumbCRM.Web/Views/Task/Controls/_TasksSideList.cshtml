@@ -1,0 +1,20 @@
+﻿@model List<CrumbCRM.Task> 
+@if (Model.Count == 0)
+{
+    <div class="lighter">
+        No tasks added
+    </div>
+}     
+@foreach (var item in Model)
+{
+    <div>
+        <p>@Html.Raw(CrumbCRM.Web.Helpers.HtmlHelper.StripHtml(item.Body))<span class="hidden"><a href="/task/delete/@item.ID" title="Mark done"><i class="icon-small icon-dark icon-remove"></i></a></span></p>
+    </div>
+
+}
+@if(ViewBag.Detail == false) {
+    <div>
+        <a href="/task" class="left">view more</a>
+        <a href="/task/add" class="right btn-small btn-secondary"><i class="icon icon-light icon-small icon-smaller icon-add"></i>Add</a>
+    </div>
+}

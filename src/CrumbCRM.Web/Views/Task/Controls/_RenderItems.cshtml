@@ -1,0 +1,28 @@
+﻿@model List<CrumbCRM.Task>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <div class="item" data-id="@item.ID">
+        <div class="left">
+            <form class="inline hidden">
+                <input type="checkbox" /></form>
+            <span class="txt-large no-bold">@Html.Raw(CrumbCRM.Web.Helpers.HtmlHelper.StripHtml(item.Body)),  @item.AssignedByUser.FullName</span>
+            <span class="edit hidden"><a href="/task/edit/@item.ID"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
+            <span class="delete hidden"><a href="/task/delete/@item.ID"><i class="icon-small icon-dark icon-remove"></i>done</a></span>
+        </div>
+        <!-- /left -->
+        <div class="right">
+            <div class="date">@item.CreatedDate.ToString("dd MMM yyyy")</div>
+            <span class="right user ">@(item.AssignedID.HasValue ? item.AssignedUser.FullName : string.Empty)</span>
+        </div>
+        <!-- /right -->
+    </div> <!-- /item -->
+}
+@if (ViewBag.Next != null)
+{
+    <div class="content-loading" data-next="@ViewBag.Next">
+        <img src="/Content/Images/ajax-loader.gif" />
+    </div>
+}

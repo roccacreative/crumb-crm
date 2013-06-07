@@ -1,0 +1,37 @@
+﻿@model CrumbCRM.Web.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+
+<h1>Register</h1>
+
+<div class="width-wide left">
+
+
+@using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "box" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-row">
+    @Html.LabelFor(m => m.UserName)
+    @Html.TextBoxFor(m => m.UserName, new { @class = "input-medium" })
+    </div>
+    
+    <div class="form-row">
+    @Html.LabelFor(m => m.Password)
+    @Html.PasswordFor(m => m.Password, new { @class = "input-medium" })
+    </div>    
+    <div class="form-row">
+    @Html.LabelFor(m => m.ConfirmPassword)
+    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input-medium" })
+    </div>
+    
+    <div class="actions">
+        <input type="submit" value="Register" class="btn btn-primary" /> or @Html.ActionLink("Login", "Login")
+    </div>
+
+
+}
+</div>

@@ -1,0 +1,31 @@
+﻿@model List<CrumbCRM.Quote>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <div class="item" data-id="@item.ID" data-title="@item.Title">
+        <div class="left">
+            <form class="inline hidden">
+                <input type="checkbox" /></form>
+            <span class="txt-large no-bold"><a href="@Url.Action("View", "Quote", new { id = item.ID })" class="tooltip" title="View/Add Notes">@item.Title</a></span>
+            <span class="edit hidden"><a href="/quote/edit/@item.ID"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
+            <span class="delete hidden"><a href="/quote/delete/@item.ID"><i class="icon-small icon-dark icon-remove"></i>delete</a></span>
+        </div>
+        <!-- /left -->
+
+        <div class="right">
+            <div class="date">@item.CreatedDate.ToString("dd MMM yyyy")</div>
+        </div>
+        <!-- /right -->
+        <div class="right lighter hidden">
+            <a href="/quote/generateinvoice" class="btn generate-invoice btn-secondary">generate invoice</a>
+        </div>
+    </div> <!-- /item -->
+}
+@if (ViewBag.Next != null)
+{
+    <div class="content-loading" data-next="@ViewBag.Next">
+        <img src="/Content/Images/ajax-loader.gif" />
+    </div>
+}

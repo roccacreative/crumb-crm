@@ -1,0 +1,49 @@
+﻿@model CrumbCRM.Task
+@{
+    ViewBag.Title = "Add";
+}
+
+<h1>Add Task<a href="/task" class="btn-back">Back</a></h1>
+<div class="width-wide left">
+    @using (Html.BeginForm("Add", "Task", FormMethod.Post, new { @class = "box" }))
+    {   
+        @Html.HiddenFor(c => c.ID)
+
+        @Html.Hidden("ItemID", Request.QueryString["ItemID"])
+        @Html.Hidden("AreaType", Request.QueryString["AreaType"])
+    
+        <div class="form-row">
+            <label class="left">Task Body</label>
+            <div class="textarea-wrap left">
+            @Html.TextAreaFor(c => c.Body, new { @class = "input-large ckeditor required" })
+            </div>
+        </div>
+    
+        <div class="form-row">
+            <label>Assigned to</label>
+            @Html.DropDownList("Members", null, "Please select user", new { @class = "input-large" })
+        </div>        
+        <div class="form-row">
+            <label>Action type</label>
+            @Html.DropDownList("ActionType", null, "Select action type", new { @class = "input-medium" })
+        </div>
+        <div class="form-row">
+            <label>Due Date (optional)</label>
+            @Html.TextBox("DueDate", Model != null ? Model.DueDate.Value.ToString("dddd, d MMMM, yyyy") : string.Empty ,new { @class = "input-medium datepicker", placeholder = "Select date" })
+        </div>
+    
+        <div class="actions">
+            <input type="submit" value="Add Task" class="btn btn-primary" />
+        </div>
+    }
+</div>
+<!-- /content-right -->
+
+
+<div class="width-side right no-mobile">
+    <div class="box no-mobile dash-tasks">
+        <h4>Tasks</h4>
+        @{Html.RenderAction("DisplaySideTasks", "Task", new { });}
+    </div>
+</div>
+<!-- /width-side -->

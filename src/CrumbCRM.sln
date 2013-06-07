@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{62437ACE-4AA0-4630-AA3E-EAE3850787AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrumbCRM.Data.Entity", "CrumbCRM.Data.Entity\CrumbCRM.Data.Entity.csproj", "{21C4A766-7DB9-4D1E-82E1-BAE6906B5B9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrumbCRM.Common", "CrumbCRM.Common\CrumbCRM.Common.csproj", "{84DCAC74-1553-4E8E-92B5-20B8D5B9B80F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrumbCRM", "CrumbCRM\CrumbCRM.csproj", "{541BB6C0-D1F3-4A42-BB4B-96DBC5A19A89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrumbCRM.Services", "CrumbCRM.Services\CrumbCRM.Services.csproj", "{DA091ACD-BF39-4FEF-BD96-58E71474EF37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrumbCRM.Web", "CrumbCRM.Web\CrumbCRM.Web.csproj", "{EBA9D2E1-5339-4EEF-9D4D-4D3F994B9EDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21C4A766-7DB9-4D1E-82E1-BAE6906B5B9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21C4A766-7DB9-4D1E-82E1-BAE6906B5B9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21C4A766-7DB9-4D1E-82E1-BAE6906B5B9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21C4A766-7DB9-4D1E-82E1-BAE6906B5B9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84DCAC74-1553-4E8E-92B5-20B8D5B9B80F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84DCAC74-1553-4E8E-92B5-20B8D5B9B80F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84DCAC74-1553-4E8E-92B5-20B8D5B9B80F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84DCAC74-1553-4E8E-92B5-20B8D5B9B80F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{541BB6C0-D1F3-4A42-BB4B-96DBC5A19A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{541BB6C0-D1F3-4A42-BB4B-96DBC5A19A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{541BB6C0-D1F3-4A42-BB4B-96DBC5A19A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{541BB6C0-D1F3-4A42-BB4B-96DBC5A19A89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA091ACD-BF39-4FEF-BD96-58E71474EF37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA091ACD-BF39-4FEF-BD96-58E71474EF37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA091ACD-BF39-4FEF-BD96-58E71474EF37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA091ACD-BF39-4FEF-BD96-58E71474EF37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBA9D2E1-5339-4EEF-9D4D-4D3F994B9EDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBA9D2E1-5339-4EEF-9D4D-4D3F994B9EDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBA9D2E1-5339-4EEF-9D4D-4D3F994B9EDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBA9D2E1-5339-4EEF-9D4D-4D3F994B9EDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{21C4A766-7DB9-4D1E-82E1-BAE6906B5B9F} = {62437ACE-4AA0-4630-AA3E-EAE3850787AE}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,11 @@
+﻿@model List<CrumbCRM.Tag>      
+@{
+    
+}
+@foreach (var item in Model)
+{
+    var selected = (ViewBag.SelectedTags != null && ((List<CrumbCRM.Tag>)ViewBag.SelectedTags).Where(t => t.ID == item.ID).Count() > 0);
+    <div>
+        <span class="label tag @(selected ? "current" : string.Empty)"><a href="@Url.Action(selected ? "RemoveTag" : "SelectTag", "Tags", new { id = @item.ID})">@item.Name</a></span>
+    </div>
+}

@@ -1,0 +1,45 @@
+﻿@model CrumbCRM.Web.Models.NoteViewModel
+@{
+    ViewBag.Title = "Add a Note";
+}
+
+@{
+    if (string.IsNullOrEmpty(Model.ParentItem.FirstName) && string.IsNullOrEmpty(Model.ParentItem.LastName))
+    {
+    <h1><a href="/@Model.NoteType/view/@Model.ItemID?type=@((int)Model.NoteType)">@Model.ParentItem.CompanyName</a> / Add Note</h1>
+    }
+    else
+    {
+    <h1><a href="/@Model.NoteType/view/@Model.ItemID?type=@((int)Model.NoteType)">@Model.ParentItem.FirstName @Model.ParentItem.LastName</a> / Add Note</h1>
+    } 
+}
+
+<div class="width-wide left">
+    @using (Html.BeginForm("Add", "Note", FormMethod.Post, new { @class = "box" }))
+    {
+        @Html.HiddenFor(c => c.ItemID)
+        @Html.HiddenFor(c => c.NoteType)
+        <div class="form-row">
+            <label>Note</label>
+            <div class="textarea-wrap">
+            @Html.TextAreaFor(c => c.Note.Body, new { @class = "input-large ckeditor", placeholder = "Note" })
+            </div>
+        </div>
+
+    
+
+        <div class="actions">
+            <input type="submit" value="Add Note" class="btn btn-primary" />
+        </div>
+    }
+</div>
+<!-- /content-right -->
+
+
+<div class="width-side right no-mobile">
+    <div class="box no-mobile dash-tasks">
+        <h4>Tasks</h4>
+        @{Html.RenderAction("DisplaySideTasks", "Task", new { });}
+    </div>
+</div>
+<!-- /width-side -->

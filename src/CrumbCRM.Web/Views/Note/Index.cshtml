@@ -1,0 +1,98 @@
+﻿@model CrumbCRM.Web.Models.NoteViewModel
+@{
+    ViewBag.Title = "Notes";
+}
+
+@{
+    if(Model.ParentItem != null) {
+        if (string.IsNullOrEmpty(Model.ParentItem.FirstName) && string.IsNullOrEmpty(Model.ParentItem.LastName) && !string.IsNullOrEmpty(Model.ParentItem.CompanyName))
+        {
+            <h1><a href="/@Model.NoteType">@Model.NoteType</a> / @Model.ParentItem.CompanyName</h1>
+        }
+        else if (!string.IsNullOrEmpty(Model.ParentItem.FirstName) && !string.IsNullOrEmpty(Model.ParentItem.LastName) && string.IsNullOrEmpty(Model.ParentItem.CompanyName))
+        {
+            <h1><a href="/@Model.NoteType">@Model.NoteType</a> / @Model.ParentItem.FirstName @Model.ParentItem.LastName</h1>
+        }
+        else if (!string.IsNullOrEmpty(Model.ParentItem.FirstName) && !string.IsNullOrEmpty(Model.ParentItem.LastName) && !string.IsNullOrEmpty(Model.ParentItem.CompanyName))
+        {
+            <h1><a href="/@Model.NoteType">@Model.NoteType</a> / @Model.ParentItem.FirstName @Model.ParentItem.LastName (@Model.ParentItem.CompanyName)</h1>
+        }
+    }
+
+}
+
+<h3 class="alt">Notes</h3>
+
+		<div class="width-wide left">
+            
+            @{
+                if (ViewBag.Message != null) {
+                    <p class="msg msg-success">
+                    @ViewBag.message
+                        <a href="javascript:;" class="msg-close right">close</a>
+                    </p>
+                }
+            }
+
+			<div class="stream">
+				<div class="stream-head">
+					<form>
+						<input type="checkbox" />
+					</form>
+                    <a href="javascript:;" data-action="/lead/delete/" class="btn btn-check-delete nodisplay btn-secondary"><i class="icon icon-small icon-light icon-remove"></i>delete selected</a>
+					<a href="/note/add/@Model.ParentItem.ID?type=@((int)Model.NoteType)" class="btn btn-primary"><i class="icon-small icon-add"></i>add note</a>
+                   
+					<form class="inline-search" id="stream-search">
+						<input type="text" value="" placeholder="Search notes" />
+					</form>
+
+					<div class="right">
+						Sort by date: 
+                        <form class="inline-select">
+						    <select class="sorting">
+                                @if (ViewBag.order == "desc")
+                                {
+                                <option value="asc">ascending</option>
+                                <option value="desc" selected>descending</option>
+                                }
+                                else
+                                {
+                                <option value="asc" selected>ascending</option>
+                                <option value="desc">descending</option>
+                                }                                
+						    </select>
+					    </form>
+					</div>
+				</div>
+				<div class="stream-content">
+                    @foreach (var item in Model.Notes)
+                    {
+					<div class="item" data-id="@item.ID">
+						<div class="left">
+							<form class="inline hidden"><input type="checkbox" /></form>
+							<span class="txt-large no-bold">@Html.Raw(CrumbCRM.Web.Helpers.HtmlHelper.StripHtml(item.Body))</span>
+							<span class="edit hidden"><a href="/note/edit/@item.ID"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
+							<span class="delete hidden"><a href="/note/delete/@item.ID"><i class="icon-small icon-dark icon-remove"></i>delete</a></span>
+						</div> <!-- /left -->
+
+                        <div class="right lighter">
+
+                            <span>@item.CreatedDate.ToString("dd MMM yyyy")</span>
+						</div>
+
+					</div> <!-- /item -->
+                    }
+	
+
+				</div> <!-- /stream-content -->			
+			</div> <!-- /stream -->
+		</div> <!-- /content-right -->
+
+
+<div class="width-side right no-mobile">
+    <div class="box no-mobile dash-tasks">
+        <h4>Tasks</h4>
+        @{Html.RenderAction("DisplaySideTasks", "Task", new { });}
+    </div>
+</div>
+<!-- /width-side -->

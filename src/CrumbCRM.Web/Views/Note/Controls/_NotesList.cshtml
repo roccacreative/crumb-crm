@@ -1,0 +1,30 @@
+﻿@model List<CrumbCRM.Note>
+@{
+    ViewBag.Title = "_Notes";
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <div class="item" data-id="@item.ID">
+        <div class="left">
+            <div class="top">
+                <span class="lighter smaller">Note by @Membership.GetUser(item.AuthorID).UserName</span>
+            </div>
+            <div class="bottom">
+@*                <form class="inline hidden">
+                    <input type="checkbox" />
+                </form>*@
+                <span class="txt-large no-bold">@Html.Raw(CrumbCRM.Web.Helpers.HtmlHelper.StripHtml(item.Body))</span>
+                <span class="edit hidden"><a href="/note/edit/@item.ID"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
+                <span class="delete hidden"><a href="/note/delete/@item.ID"><i class="icon-small icon-dark icon-remove"></i>delete</a></span>
+            </div>
+        </div>
+        <!-- /left -->
+
+        <div class="right lighter">
+
+            <span>@item.CreatedDate.ToString("dd MMM yyyy")</span>
+        </div>
+
+    </div> <!-- /item -->
+}

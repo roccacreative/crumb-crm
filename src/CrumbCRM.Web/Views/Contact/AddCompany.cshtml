@@ -1,0 +1,71 @@
+﻿@model CrumbCRM.Contact
+@{
+    ViewBag.Title = "Add a Company";
+}
+
+<h1>Add contact<a href="/contact" class="btn-back">Back</a></h1>
+<div class="width-wide left">
+    @using (Html.BeginForm("Add", "Contact", FormMethod.Post, new { @class = "box" }))
+    {
+        @Html.HiddenFor(c => c.ID)
+        @Html.Hidden("Type", CrumbCRM.ContactType.Company)
+        <div class="form-row">
+            <label>Company</label>
+            @Html.TextBoxFor(c => c.CompanyName, null, new { @class = "input-large required", placeholder = "Company" })
+        </div>
+        <div class="form-row">
+            <label>Business Sector</label>
+            @Html.TextBoxFor(c => c.BusinessSector, null, new { @class = "input-large", placeholder = "Business sector" })
+        </div>
+        <div class="form-row">
+            <label>Email</label>
+            @Html.TextBoxFor(c => c.Email, null, new { @class = "input-large", placeholder = "Email" })
+        </div>
+        <div class="form-row">
+            <label>Phone</label>
+            @Html.TextBoxFor(c => c.Mobile, null, new { @class = "input-medium", placeholder = "Mobile" })
+            @Html.TextBoxFor(c => c.Work, null, new { @class = "input-medium", placeholder = "Work" })
+        </div>
+        <div class="form-row">
+            <label>Address</label>
+            @Html.TextBoxFor(c => c.Address, null, new { @class = "input-large", placeholder = "Address" })
+        </div>
+        <div class="form-row">
+            <label></label>
+            @Html.TextBoxFor(c => c.City, null, new { @class = "input-small", placeholder = "City" })
+            @Html.TextBoxFor(c => c.County, null, new { @class = "input-small", placeholder = "County" })
+            @Html.TextBoxFor(c => c.Postcode, null, new { @class = "input-small", placeholder = "Postcode" })
+        </div>
+        <div class="form-row">
+            <label>Tags</label>
+            @Html.TextBoxFor(c => c.Address, null, new { @class = "input-large", placeholder = "Tag this content..." })
+        </div>
+    
+        <div class="form-row">
+            <label>Account Manager</label>
+            @Html.DropDownList("Members", null, "Please select user", new { @class = "input-large" })
+        </div>
+    
+        <div class="form-row">
+            <label>Private</label>
+            @Html.CheckBoxFor(c => c.Private, null)
+        </div>
+    
+
+
+        <div class="actions">
+            <input type="submit" value="Add Contact" class="btn btn-primary" />
+        </div>
+    }
+</div>
+<!-- /content-right -->
+
+
+<div class="width-side right no-mobile">
+    <div class="box no-mobile dash-tasks">
+        <h4>Tasks</h4>
+        @{Html.RenderAction("DisplaySideTasks", "Task", new { });}
+    </div>
+</div>
+<!-- /width-side -->
+<!-- /content-left -->

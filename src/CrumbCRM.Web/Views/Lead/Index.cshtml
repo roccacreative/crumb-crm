@@ -1,0 +1,130 @@
+﻿@model CrumbCRM.Web.Models.LeadViewModel
+@{
+    ViewBag.Title = "Leads";
+}
+
+<h1>Leads</h1>
+
+
+<div class="width-wide left">
+
+    @if (ViewBag.Message != null)
+    {
+        <p class="msg msg-success">
+            @ViewBag.message
+            <a href="javascript:;" class="msg-close right">close</a>
+        </p>
+    }
+
+    @Html.Hidden("current-lead-type", @Model.LeadType)
+    <nav class="stages-nav">
+        <a href="/leads/@(CrumbCRM.LeadType.New.ToString().ToLower())"  class="stage-new @(Model.LeadType.HasValue && Model.LeadType.Value == CrumbCRM.LeadType.New ? "active" : string.Empty)" data-stage-id="@((int)CrumbCRM.LeadType.New)" data-stage="stage-@(CrumbCRM.LeadType.New.ToString().ToLower())">New<span class="total">@Model.TotalNew</span></a>
+        <a href="/leads/@(CrumbCRM.LeadType.Emailed.ToString().ToLower())"  class="stage-emailed @(Model.LeadType.HasValue && Model.LeadType.Value == CrumbCRM.LeadType.Emailed ? "active" : string.Empty)" data-stage-id="@((int)CrumbCRM.LeadType.Emailed)" data-stage="stage-@(CrumbCRM.LeadType.Emailed.ToString().ToLower())">Emailed<span class="total">@Model.TotalEmailed</span></a>
+        <a href="/leads/@(CrumbCRM.LeadType.NoAnswer.ToString().ToLower())"  class="stage-noanswer @(Model.LeadType.HasValue && Model.LeadType.Value == CrumbCRM.LeadType.NoAnswer ? "active" : string.Empty)" data-stage-id="@((int)CrumbCRM.LeadType.NoAnswer)" data-stage="stage-@(CrumbCRM.LeadType.NoAnswer.ToString().ToLower())">No Answer<span class="total">@Model.TotalNoAnswer</span></a>
+        <a href="/leads/@(CrumbCRM.LeadType.NotInterested.ToString().ToLower())"  class="stage-notinterested @(Model.LeadType.HasValue && Model.LeadType.Value == CrumbCRM.LeadType.NotInterested ? "active" : string.Empty)" data-stage-id="@((int)CrumbCRM.LeadType.NotInterested)" data-stage="stage-@(CrumbCRM.LeadType.NotInterested.ToString().ToLower())">Not Interested<span class="total">@Model.TotalNotInterested</span></a>
+        <a href="/leads/@(CrumbCRM.LeadType.Callback.ToString().ToLower())"  class="stage-callback @(Model.LeadType.HasValue && Model.LeadType.Value == CrumbCRM.LeadType.Callback ? "active" : string.Empty)" data-stage-id="@((int)CrumbCRM.LeadType.Callback)" data-stage="stage-@(CrumbCRM.LeadType.Callback.ToString().ToLower())">Callback<span class="total">@Model.TotalCallback</span></a>
+        <a href="/leads/@(CrumbCRM.LeadType.DoNotContact.ToString().ToLower())"  class="stage-donotcontact @(Model.LeadType.HasValue && Model.LeadType.Value == CrumbCRM.LeadType.DoNotContact ? "active" : string.Empty)" data-stage-id="@((int)CrumbCRM.LeadType.DoNotContact)" data-stage="stage-@(CrumbCRM.LeadType.DoNotContact.ToString().ToLower())">Do Not Contact<span class="total">@Model.TotalDoNotContact</span></a>
+    </nav>
+    <!-- /stages-nav -->
+
+    <div class="stream">
+        <div class="stream-head">
+            <form>
+                <input type="checkbox" />
+            </form>
+            <a href="javascript:;" data-action="/lead/delete/" class="btn btn-check-delete nodisplay btn-secondary"><i class="icon icon-small icon-light icon-remove"></i>delete selected</a>
+            <a href="/lead/add" class="btn btn-primary"><i class="icon-small icon-add"></i>add lead</a>
+
+            <form class="inline-search" id="stream-search">
+                <input type="text" value="" placeholder="Search leads" />
+            </form>
+
+            <div class="right">
+                Sort by date: 
+                        <form class="inline-select">
+                            <select class="sorting">
+                                @if (ViewBag.order == "desc")
+                                {
+                                    <option value="asc">ascending</option>
+                                    <option value="desc" selected>descending</option>
+                                }
+                                else
+                                {
+                                    <option value="asc" selected>ascending</option>
+                                    <option value="desc">descending</option>
+                                }
+                            </select>
+                        </form>
+            </div>
+        </div>
+        <div class="stream-content">
+            @{Html.RenderAction("RenderItems", "Lead", new { area = "Lead", page = 1 });}
+        </div>
+        <!-- /stream-content -->
+    </div>
+    <!-- /stream -->
+
+
+</div>
+<!-- /content-right -->
+
+<div class="width-side right">
+    <div class="box no-mobile dash-tasks">
+        <h4>Tasks</h4>
+        @{Html.RenderAction("DisplaySideTasks", "Task", new { });}
+    </div>
+    <div class="box no-mobile dash-labels">
+        <h4>Campaigns</h4>
+        @{Html.RenderAction("DisplaySideCampaigns", "Campaigns", new { });}
+    </div>
+    <div class="box no-mobile dash-labels">
+        <h4>Tags</h4>
+        @{Html.RenderAction("DisplaySideTags", "Tags", new { });}
+    </div>
+    <div class="drop-stages hide">
+        <div class="box drop-stage stage-emailed" data-stage-id="@((int)CrumbCRM.LeadType.Emailed)" data-stage="stage-emailed" id="droppable">
+            <div class="stage-desc">
+                Emailed
+            </div>
+        </div>
+        <div class="box drop-stage stage-noanswer" data-stage-id="@((int)CrumbCRM.LeadType.NoAnswer)" data-stage="stage-noanswer" id="droppable">
+            <div class="stage-desc">
+                No Answer
+            </div>
+        </div>
+        <div class="box drop-stage stage-callback" data-stage-id="@((int)CrumbCRM.LeadType.Callback)" data-stage="stage-callback" id="droppable">
+            <div class="stage-desc">
+                Callback
+            </div>
+        </div>
+        <div class="box drop-stage stage-notinterested" data-stage-id="@((int)CrumbCRM.LeadType.NotInterested)" data-stage="stage-notinterested" id="droppable">
+            <div class="stage-desc">
+                Not Interested
+            </div>
+        </div>
+        <div class="box drop-stage stage-donotcontact" data-stage-id="@((int)CrumbCRM.LeadType.DoNotContact)" data-stage="stage-donotcontact" id="droppable">
+            <div class="stage-desc">
+                Do Not Contact
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /content-left -->
+
+<div class="nodisplay">
+    <div class="notes-popup">
+        @using (Ajax.BeginForm("AddNote", "Note", null, new AjaxOptions() { OnSuccess = "events.noteSuccess" }, new { @class = "box" }))
+        {
+            @Html.Hidden("ItemID", string.Empty)
+            @Html.Hidden("Type", CrumbCRM.NoteType.Lead)
+            <div class="form-row">
+                @Html.TextArea("Body", string.Empty, 8, 10, new { @class = "input-full", placeholder = "Note" })
+            </div>
+            <div class="inline-actions">
+                @Html.DropDownList("ActionType")
+                <input type="submit" value="Add Note" class="btn btn-primary" id="note-popup-button" />
+            </div>
+        }
+    </div>
+</div>
+

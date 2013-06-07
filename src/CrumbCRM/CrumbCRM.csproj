@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{541BB6C0-D1F3-4A42-BB4B-96DBC5A19A89}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CreativeCRM</RootNamespace>
+    <AssemblyName>CreativeCRM</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0-alpha2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0-alpha2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.0.0-alpha2\lib\net40\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.3.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorPDF">
+      <HintPath>..\packages\RazorPDF.1.0.0\lib\net45\RazorPDF.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.0.0-alpha2\lib\net40\System.Data.SqlServerCe.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Activity.cs" />
+    <Compile Include="Campaign.cs" />
+    <Compile Include="Contact.cs" />
+    <Compile Include="Data\ICampaignRepository.cs" />
+    <Compile Include="Data\ISaleRepository.cs" />
+    <Compile Include="Data\ITagRepository.cs" />
+    <Compile Include="Sale.cs" />
+    <Compile Include="Data\IActivityRepository.cs" />
+    <Compile Include="Data\IMembershipRepository.cs" />
+    <Compile Include="Data\INoteRepository.cs" />
+    <Compile Include="Data\IRoleRepository.cs" />
+    <Compile Include="Note.cs" />
+    <Compile Include="Data\ITaskRepository.cs" />
+    <Compile Include="Providers\CustomMembershipProvider.cs" />
+    <Compile Include="Providers\CustomRoleProvider.cs" />
+    <Compile Include="Security\Crypto.cs" />
+    <Compile Include="Security\Role.cs" />
+    <Compile Include="Security\User.cs" />
+    <Compile Include="Security\WebSecurity.cs" />
+    <Compile Include="Services\IActivityService.cs" />
+    <Compile Include="Services\ICampaignService.cs" />
+    <Compile Include="Services\IMembershipService.cs" />
+    <Compile Include="Services\INoteService.cs" />
+    <Compile Include="Services\IRoleService.cs" />
+    <Compile Include="Services\ISaleService.cs" />
+    <Compile Include="Services\ITagService.cs" />
+    <Compile Include="Services\ITaskService.cs" />
+    <Compile Include="Tag.cs" />
+    <Compile Include="Task.cs" />
+    <Compile Include="Data\ILeadRepository.cs" />
+    <Compile Include="Lead.cs" />
+    <Compile Include="Data\IContactRepository.cs" />
+    <Compile Include="Data\IInvoiceRepository.cs" />
+    <Compile Include="Data\IQuoteRepository.cs" />
+    <Compile Include="Data\IRepositoryBase.cs" />
+    <Compile Include="Invoice.cs" />
+    <Compile Include="InvoiceItem.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quote.cs" />
+    <Compile Include="QuoteItem.cs" />
+    <Compile Include="Services\ILeadService.cs" />
+    <Compile Include="Services\IContactService.cs" />
+    <Compile Include="Services\IInvoiceService.cs" />
+    <Compile Include="Services\IQuoteService.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="RecuringItem.cs" />
+    <Compile Include="RecuringTemplate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CreativeCRM.Common\CrumbCRM.Common.csproj">
+      <Project>{84dcac74-1553-4e8e-92b5-20b8d5b9b80f}</Project>
+      <Name>CrumbCRM.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

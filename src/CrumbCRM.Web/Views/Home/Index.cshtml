@@ -1,0 +1,201 @@
+﻿@model CrumbCRM.Web.Models.HomeViewModel
+@using CrumbCRM.Web.Helpers
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+
+<h1>Dashboard</h1>
+
+<div class="width-side left">
+    <div class="box pipeline">
+        <h4>Total Pipeline Worth</h4>
+        <span class="txt-huge"><b>@(string.Format("{0:C}", Model.TotalSalesPipeline))</b></span>
+    </div>
+    <div class="box">
+        <h4>Active Deals</h4>
+        <span class="txt-huge">@Model.TotalActiveDeals</span>
+    </div>
+    <div class="box">
+        <h4>In the last 30 days</h4>
+        <div class="txt-large"><b>@Model.Last30TotalWon</b> Won</div>
+        <div class="txt-large"><b>@Model.Last30TotalLost</b> Lost</div>
+        <div class="txt-large"><b>@Model.Last30TotalUnqualified</b> Unqualified</div>
+    </div>
+
+
+</div>
+<!-- /width-side -->
+
+<div class="width-middle left">
+    <div class="stream">
+        <div class="stream-head">Events</div>
+        <div class="stream-content">
+            <div id="calendar">
+            </div>
+        </div>
+    </div>
+    <div class="stream">
+        <div class="stream-head">Activity stream</div>
+        <div class="stream-content">
+            @foreach (var item in Model.Activities)
+            {
+                <div class="item">
+                    @switch (item.Type)
+                    {
+                        case CrumbCRM.Enums.AreaType.Lead:
+                        <text><a href="@Url.Action("View", "Lead", new { id = item.ItemID.Value})">Lead</a> @item.Description by @item.User.Username</text>
+                            break;
+                        case CrumbCRM.Enums.AreaType.Sale:
+                        <text><a href="@Url.Action("View", "Sale", new { id = item.ItemID.Value})">Sale</a> @item.Description by @item.User.Username</text>
+                            break;
+                            case CrumbCRM.Enums.AreaType.Contact:
+                        <text><a href="@Url.Action("View", "Contact", new { id = item.ItemID.Value})">Contact</a> @item.Description by @item.User.Username</text>
+                            break;
+                        case CrumbCRM.Enums.AreaType.Task:
+                        <text><a href="@Url.Action("View", "Task", new { id = item.ItemID.Value})">Task</a> @item.Description by @item.User.Username</text>
+                            break;
+                        case CrumbCRM.Enums.AreaType.Quote:
+                        <text><a href="@Url.Action("View", "Quote", new { id = item.ItemID.Value})">Quote</a> @item.Description by @item.User.Username</text>
+                            break;
+                        case CrumbCRM.Enums.AreaType.Invoice:
+                        <text><a href="@Url.Action("View", "Invoice", new { id = item.ItemID.Value})">Invoice</a> @item.Description by @item.User.Username</text>
+                            break;
+                        default:
+                            break;
+                    }
+                    <div class="date">@item.ActivityDate.ago()</div>
+                </div> <!-- /item -->   
+            }
+        </div>
+        <!-- /stream-content -->
+
+
+    </div>
+    <!-- /stream -->
+
+    <div class="box">
+
+        <h3>Past 30 days</h3>
+
+
+        <div id="donut-leads" class="donut-dash left"></div>
+        <script>
+            Morris.Donut({
+                element: 'donut-leads',
+                data: [
+                          { label: "Emailed", value: @(Model.Last30TotalEmailed)},
+                          { label: "No Answer", value: @(Model.Last30TotalNoAnswer)},
+                          { label: "Not Interes.", value: @(Model.Last30TotalNoAnswer)},
+                          { label: "Callback", value: @(Model.Last30TotalCallback)},
+                          { label: "Do Not Contact", value: @(Model.Last30TotalDoNotContact)}
+                        ]
+                    });
+
+        </script>
+
+
+        <div id="donut-leadsvssales" class="donut-dash left"></div>
+        <script>
+            Morris.Donut({
+                element: 'donut-leadsvssales',
+                data: [
+                  { label: "Leads", value: @(Model.Last30Leads)},
+                          { label: "Sales", value: @(Model.Last30Sales)},
+                        ]
+                    });
+        </script>
+
+        <h1></h1>
+
+
+
+        <div class="width-small right trends">
+            <div class="trend-box">
+                <div class="label">
+                    New Leads
+                            @{
+                                if (Model.Prev30Leads < Model.Last30Leads)
+                                {
+                                <span class="trend-up">&#x25B2;</span>
+                                }
+                                else if (Model.Prev30Leads > Model.Last30Leads)
+                                {
+                                <span class="trend-down">&#x25BC;</span>
+                                }                                
+                            }
+
+                </div>
+                <div class="count">@Model.Last30Leads</div>
+                <div class="change">
+                    @{
+                        if (Model.Prev30Sales < Model.Last30Leads)
+                        {
+                            var num = Model.Last30Leads - Model.Prev30Leads;
+                        @Html.Raw("+" + num)
+                        }
+                        else if (Model.Prev30Sales > Model.Last30Leads)
+                        {
+                            var num = Model.Prev30Leads - Model.Last30Leads;
+                        @Html.Raw("-" + num)   
+                        } else {
+                            var num = Model.Prev30Sales - Model.Last30Sales;
+                            @num
+                        }                                   
+                    }
+                </div>
+            </div>
+            <!-- /trend-box -->
+
+            <div class="trend-box">
+                <div class="label">
+                    New Sales 
+                            @{
+                                if (Model.Prev30Sales < Model.Last30Sales)
+                                {
+                                <span class="trend-up">&#x25B2;</span>
+                                }
+                                else if (Model.Prev30Sales > Model.Last30Sales)
+                                {
+                                <span class="trend-down">&#x25BC;</span>
+                                }                                
+                            }
+
+                </div>
+                <div class="count">@Model.Last30Sales</div>
+                <div class="change">
+                    @{
+                        if (Model.Prev30Sales < Model.Last30Sales)
+                        {
+                            var num = Model.Last30Sales - Model.Prev30Sales;
+                            @Html.Raw("+" + num)
+                        }
+                        else if (Model.Prev30Sales > Model.Last30Sales)
+                        {
+                            var num = Model.Prev30Sales - Model.Last30Sales;
+                            @Html.Raw("-" + num)   
+                        } else {
+                            var num = Model.Prev30Sales - Model.Last30Sales;
+                            @num
+                        }                               
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- /trend-box -->
+
+    </div>
+
+
+</div>
+<!-- /width-middle -->
+
+
+
+<div class="width-side right no-mobile">
+    <div class="box no-mobile dash-tasks">
+        <h4>Tasks</h4>
+        @{Html.RenderAction("DisplaySideTasks", "Task", new { });}
+    </div>
+</div>
+<!-- /width-side -->

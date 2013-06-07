@@ -1,0 +1,64 @@
+﻿@model CrumbCRM.Sale
+@{
+    ViewBag.Title = "Add a Sale";
+}
+
+<h1>Add Sale<a href="@Url.Action("Index", "Sale")" class="btn-back">Back</a></h1>
+<div class="width-wide left">
+    @using (Html.BeginForm("Add", "Sale", FormMethod.Post, new { @class = "box" }))
+    {
+        @Html.HiddenFor(c => c.ID)
+        @Html.HiddenFor(c => c.Status)
+        @Html.Hidden("convert", !string.IsNullOrEmpty(Request["convert"]) ? Request["convert"] : string.Empty);
+        <div class="form-row">
+            <label>Sale Name</label>
+            @Html.TextBoxFor(c => c.Name, null, new { @class = "input-medium", placeholder = "Name" })
+        </div>
+        <div class="form-row">
+            <label>Contact</label>
+            @Html.DropDownList("People", null, "Please select contact", new { @class = "input-large" })
+        </div>        
+        <div class="form-row">
+            <label>Company</label>
+            @Html.DropDownList("Companies", null, "Please select company", new { @class = "input-large required" })
+        </div>  
+        <div class="form-row">
+            <label>Account Manager</label>
+            @Html.DropDownList("Members", null, "Please select user", new { @class = "input-large" })
+        </div>   
+        <div class="form-row">
+            <label>Estimated Value</label>
+            @Html.TextBoxFor(c => c.Value, null, new { @class = "input-medium", placeholder = "Value" })
+        </div> 
+        <div class="form-row">
+            <label>Tags</label>
+            @Html.TextBox("TagSelector", null, new { @class = "input-large", placeholder = "Tag this content..." })
+            @if(Model != null)
+            {
+                <input type="hidden" id="TagPrePopulate" value='@ViewBag.CurrentTags' />
+            }
+            <span class="help">Useful for search terms and grouping</span>
+        </div>          
+        <div class="form-row">
+            <label>Private</label>
+            @Html.CheckBoxFor(c => c.Private, null)
+        </div>
+        <div class="form-row">
+            <label>Priority</label>
+            @Html.DropDownList("PriorityType", null , "Please select priority", new { @class = "input-large" })
+        </div>
+        <div class="actions">
+            <input type="submit" value="Add Sale" class="btn btn-primary" />
+        </div>
+    }
+</div>
+<!-- /content-right -->
+
+
+<div class="width-side right no-mobile">
+    <div class="box no-mobile dash-tasks">
+        <h4>Tasks</h4>
+        @{Html.RenderAction("DisplaySideTasks", "Task", new { });}
+    </div>
+</div>
+<!-- /width-side -->

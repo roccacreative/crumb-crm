@@ -1,0 +1,127 @@
+﻿@model CrumbCRM.Web.Models.SaleViewModel
+@{
+    ViewBag.Title = "Sales Pipeline";
+}
+
+<h1>Sales Pipeline</h1>
+
+
+<div class="width-wide left">
+    @Html.Hidden("current-sale-type", @Model.SaleType)
+    <nav class="stages-nav">
+        <a href="/sales/@(CrumbCRM.SaleType.Prospecting.ToString().ToLower())"  class="@(Model.SaleType.HasValue && Model.SaleType.Value == CrumbCRM.SaleType.Prospecting ? "active" : string.Empty)" data-stage-id="@((int)CrumbCRM.SaleType.Prospecting)" data-stage="stage-prospecting">Prospecting<span class="total">@Model.TotalProspecting</span></a>
+        <a href="/sales/@(CrumbCRM.SaleType.Qualified.ToString().ToLower())"  class="@(Model.SaleType.HasValue && Model.SaleType.Value == CrumbCRM.SaleType.Qualified ? "active" : string.Empty) " data-stage-id="@((int)CrumbCRM.SaleType.Qualified)" data-stage="stage-qualified">Qualified<span class="total">@Model.TotalQualified</span></a>
+        <a href="/sales/@(CrumbCRM.SaleType.Quote.ToString().ToLower())" class="@(Model.SaleType.HasValue && Model.SaleType.Value == CrumbCRM.SaleType.Quote ? "active" : string.Empty)" data-stage-id="@((int)CrumbCRM.SaleType.Quote)" data-stage="stage-quote">Quote<span class="total">@Model.TotalQuote</span></a>
+        <a href="/sales/@(CrumbCRM.SaleType.Closure.ToString().ToLower())" class="@(Model.SaleType.HasValue && Model.SaleType.Value == CrumbCRM.SaleType.Closure ? "active" : string.Empty)" data-stage-id="@((int)CrumbCRM.SaleType.Closure)" data-stage="stage-closure">Closure<span class="total">@Model.TotalClosure</span></a>
+        <a href="/sales/@(CrumbCRM.SaleType.Won.ToString().ToLower())" class="@(Model.SaleType.HasValue && Model.SaleType.Value == CrumbCRM.SaleType.Won ? "active" : string.Empty)" data-stage-id="@((int)CrumbCRM.SaleType.Won)" data-stage="stage-won">Won<span class="total">@Model.TotalWon</span></a>
+        <a href="/sales/@(CrumbCRM.SaleType.Lost.ToString().ToLower())" class="@(Model.SaleType.HasValue && Model.SaleType.Value == CrumbCRM.SaleType.Lost ? "active" : string.Empty)" data-stage-id="@((int)CrumbCRM.SaleType.Lost)" data-stage="stage-lost">Lost<span class="total">@Model.TotalLost</span></a>
+        <a href="/sales/@(CrumbCRM.SaleType.Unqualified.ToString().ToLower())" class="@(Model.SaleType.HasValue && Model.SaleType.Value == CrumbCRM.SaleType.Unqualified ? "active" : string.Empty)" data-stage-id="@((int)CrumbCRM.SaleType.Unqualified)" data-stage="stage-unqualified">Unqualified<span class="total">@Model.TotalUnqualified</span></a>
+    </nav>
+    <!-- /stages-nav -->
+
+    <div class="stream">
+        <div class="stream-head">
+            <form>
+                <input type="checkbox" />
+            </form>
+            <a href="javascript:;" data-action="/lead/delete/" class="btn btn-check-delete nodisplay btn-secondary"><i class="icon icon-small icon-light icon-remove"></i>delete selected</a>
+            <a href="@Url.Action("Add", "Sale")" class="btn btn-primary"><i class="icon-small icon-add"></i>add sale</a>
+
+            <form class="inline-search">
+                <input type="text" value="" placeholder="Search sales" />
+            </form>
+
+            <div class="right">
+                Sort by date: 
+                        <form class="inline-select">
+                            <select class="sorting">
+                                @if (ViewBag.order == "desc")
+                                {
+                                    <option value="asc">ascending</option>
+                                    <option value="desc" selected>descending</option>
+                                }
+                                else
+                                {
+                                    <option value="asc" selected>ascending</option>
+                                    <option value="desc">descending</option>
+                                }
+                            </select>
+                        </form>
+            </div>
+        </div>
+        <div class="stream-content">
+            @{Html.RenderAction("RenderItems", "Sale", new { area = "Sale", page = 1 });}
+        </div>
+        <!-- /stream-content -->
+    </div>
+    <!-- /stream -->
+
+
+</div>
+<!-- /content-right -->
+
+<div class="width-side right">
+    <div class="box no-mobile dash-tasks">
+        <h4>Tasks</h4>
+        @{Html.RenderAction("DisplaySideTasks", "Task", new { });}
+    </div>
+    <div class="box no-mobile dash-labels">
+        <h4>Campaigns</h4>
+        @{Html.RenderAction("DisplaySideCampaigns", "Campaigns", new { });}
+    </div>
+    <div class="box no-mobile dash-labels">
+        <h4>Tags</h4>
+        @{Html.RenderAction("DisplaySideTags", "Tags", new { });}
+    </div>
+    <div class="drop-stages hide">
+        <div class="box drop-stage stage-qualified" data-stage-id="@((int)CrumbCRM.SaleType.Qualified)" data-stage="stage-qualified" id="droppable">
+            <div class="stage-desc">
+                Qualified
+            </div>
+        </div>
+        <div class="box drop-stage stage-quote"  data-stage-id="@((int)CrumbCRM.SaleType.Quote)" data-stage="stage-quote" id="droppable">
+            <div class="stage-desc">
+                Quote
+            </div>
+        </div>
+        <div class="box drop-stage stage-closure"  data-stage-id="@((int)CrumbCRM.SaleType.Closure)" data-stage="stage-closure" id="droppable">
+            <div class="stage-desc">
+                Closure
+            </div>
+        </div>
+        <div class="box drop-stage stage-won"  data-stage-id="@((int)CrumbCRM.SaleType.Won)" data-stage="stage-won" id="droppable">
+            <div class="stage-desc">
+                Won
+            </div>
+        </div>
+        <div class="box drop-stage stage-lost"  data-stage-id="@((int)CrumbCRM.SaleType.Lost)" data-stage="stage-lost" id="droppable">
+            <div class="stage-desc">
+                Lost
+            </div>
+        </div>
+        <div class="box drop-stage stage-unqualified"  data-stage-id="@((int)CrumbCRM.SaleType.Unqualified)" data-stage="stage-unqualified" id="droppable">
+            <div class="stage-desc">
+                Unqualified
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /content-left -->
+
+
+<div class="nodisplay">
+    <div class="notes-popup">
+        @using (Ajax.BeginForm("AddNote", "Note", null, new AjaxOptions() { OnSuccess = "events.noteSuccess" }, new { @class = "box" }))
+        {
+            @Html.Hidden("ItemID", string.Empty)
+            @Html.Hidden("Type", CrumbCRM.NoteType.Sale)
+            <div class="form-row">
+                @Html.TextArea("Body", string.Empty, 8, 10, new { @class = "input-full", placeholder = "Note" })
+            </div>
+            <div class="inline-actions">
+                @Html.DropDownList("ActionType")
+                <input type="submit" value="Add Note" class="btn btn-primary" />
+            </div>
+        }
+    </div>
+</div>

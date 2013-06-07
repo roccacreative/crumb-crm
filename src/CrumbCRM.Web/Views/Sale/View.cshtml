@@ -1,0 +1,78 @@
+﻿@model CrumbCRM.Web.Models.SaleItemViewModel
+@{
+    ViewBag.Title = "View a Sale";
+}
+<h1><a href="@Url.Action("", "Sale")">Sale</a> / @(string.Format("{0} ({1})", Model.Sale.Name, Model.Sale.Company.CompanyName))</h1>
+
+<div class="width-side small left">
+    <p class="owner-row">
+        <b><i class="icon icon-dark icon-small icon-contact"></i> @Model.Sale.OwnerUser.FullName</b> owner
+    </p>
+
+    <p>
+    <a href="/sale/edit/@Model.Sale.ID" class="btn btn-secondary">Edit lead</a>
+    </p>
+</div>
+<div class="width-wide small left">
+
+    @if (ViewBag.Message != null)
+    {
+        <p class="msg msg-success">
+            @ViewBag.message
+            <a href="javascript:;" class="msg-close right">close</a>
+        </p>
+    }
+
+    @using (Html.BeginForm("Add", "Note", FormMethod.Post, new { @class = "box" }))
+    {
+        @Html.Hidden("ItemID", Model.Sale.ID)
+        @Html.Hidden("NoteType", CrumbCRM.NoteType.Sale)
+        <div class="form-row">
+            @Html.TextAreaFor(c => c.Note.Body, 8, 10, new { @class = "input-full", placeholder = "Note" })
+        </div>
+        <div class="actions">
+            <input type="submit" value="Add Note" class="btn btn-primary" />
+        </div>
+    }
+    <h3 class="alt">Activity</h3>
+    <div class="stream">
+        <div class="stream-head">
+            <form>
+                <input type="checkbox" />
+            </form>
+            <a href="javascript:;" data-action="/lead/delete/" class="btn btn-check-delete nodisplay btn-secondary"><i class="icon icon-small icon-light icon-remove"></i>delete selected</a>
+            <a href="@Url.Action("Add", "Note", new { id = Model.Sale.ID, type = ((int)CrumbCRM.NoteType.Sale) })" class="btn btn-primary"><i class="icon-small icon-add"></i>add note</a>
+
+            <form class="inline-search" id="stream-search">
+                <input type="text" value="" placeholder="Search notes" />
+            </form>
+        </div>
+        <div class="stream-content">
+            @{Html.RenderAction("DisplayNotes", "Note", new { id = Model.Sale.ID, type = CrumbCRM.NoteType.Sale });}
+        </div>
+        <!-- /stream-content -->
+    </div>
+    <!-- /stream -->
+</div>
+<!-- /content-right -->
+
+
+<div class="width-side right no-mobile">
+    <div class="box no-mobile dash-tasks">
+        <h4>Tasks for this</h4>
+        @{Html.RenderAction("DisplaySideTasks", "Task", new { areaType = CrumbCRM.Enums.AreaType.Sale, itemId = Model.Sale.ID });}
+    </div>
+    <div class="box no-mobile dash-tasks">
+        <h4>Tasks</h4>
+        @{Html.RenderAction("DisplaySideTasks", "Task", new { });}
+    </div>
+    <div class="box no-mobile dash-labels">
+        <h4>Tags</h4>
+        @foreach (var item in Model.Sale.Tags)
+        {
+            <span class="label tag"><a href="@Url.Action("RemoveTag", "Sale", new { id = Model.Sale.ID, tagId = item.TagID })">@item.Tag.Name <span> x</span></a></span>        
+        }
+    </div>
+</div>
+<!-- /width-side -->
+
