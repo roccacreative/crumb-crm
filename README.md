@@ -37,5 +37,5 @@ Creative Commons Attribution-NonCommercial-ShareAlike
 
 ### TODO
 
-See github issues list for todo tasks.
+See github issues list for todo tasks. Contributions and requests are welcome.
 
