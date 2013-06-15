@@ -1,8 +1,38 @@
+
+function decode_base64(s) {
+    var e = {}, i, k, v = [], r = '', w = String.fromCharCode;
+    var n = [[65, 91], [97, 123], [48, 58], [43, 44], [47, 48]];
+
+    for (z in n) { for (i = n[z][0]; i < n[z][1]; i++) { v.push(w(i)); } }
+    for (i = 0; i < 64; i++) { e[v[i]] = i; }
+
+    for (i = 0; i < s.length; i += 72) {
+        var b = 0, c, x, l = 0, o = s.substring(i, i + 72);
+        for (x = 0; x < o.length; x++) {
+            c = e[o.charAt(x)]; b = (b << 6) + c; l += 6;
+            while (l >= 8) { r += w((b >>> (l -= 8)) % 256); }
+        }
+    }
+    return r;
+}
+
 $(document).ready(function () {
 
     // msgs
     $('.msg-close').click(function(){
         $('.msg').remove();
+    });
+
+    $('.html-pop').click(function () {
+        
+
+        $.blockUI({
+            message: decode_base64($(this).data('modal-content')), css: { padding: '10px', top: '20%', 'text-align': 'left' }, onBlock: function () {
+               
+            }
+        });
+
+        return false;
     });
 
     Modernizr.load();
@@ -24,7 +54,9 @@ $(document).ready(function () {
         }
         else { //1 seg
             match = /[^.]([\w]+)/.exec(window.location.pathname);
-            current_controller = match[1];
+
+            if (match != null)
+                current_controller = match[1];
         }
  
 
@@ -67,10 +99,13 @@ $(document).ready(function () {
     });
 
     // date picker
-    var datevalue = $(".datepicker").attr('value');
-    $(".datepicker").datepicker();
-    $(".datepicker").datepicker("option", "dateFormat", "DD, d MM, yy");
-    $(".datepicker").datepicker('setDate', datevalue);
+    $(".datepicker").datetimepicker();
+    $(".datepicker").datetimepicker("option", "dateFormat", "DD, d MM, yy");
+
+    $(".datepicker").each(function () {
+        $(this).datetimepicker('setDate', new Date(this.defaultValue));
+        this.value = this.defaultValue;
+    });    
 
     // toggle add new company form input row (contact/add)
     $('.add-company').click(function () {
@@ -199,7 +234,11 @@ $(document).ready(function () {
 	    var action = $(this).data('action');
 
 	    $('.stream-content .item').find('form input[type=checkbox]:checked').each(function() {
-	        id = $(this).parent().parent().parent().data('id');
+	        var id = $(this).parent().parent().parent().data('id');
+	        if (id == null) {
+                //for alt listing style (top/bottom)
+	            id = $(this).parent().parent().data('id');
+	        }
 	        $.post(action + id);
 	    
 	    });
@@ -318,6 +357,11 @@ $(document).ready(function () {
                                           $(this).closest('form').submit();
                                       }
                                   })
+                              },
+                              onBlock: function () {
+                                  $(".blockPage").css('background', 'transparent');
+                                  $(".blockPage").css('border', '0px');
+
                               }
                           });
                         $('.drop-stages').fadeOut();

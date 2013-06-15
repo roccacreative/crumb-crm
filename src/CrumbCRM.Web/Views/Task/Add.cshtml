@@ -11,11 +11,16 @@
 
         @Html.Hidden("ItemID", Request.QueryString["ItemID"])
         @Html.Hidden("AreaType", Request.QueryString["AreaType"])
+
+        <div class="form-row">
+            <label class="left">Title</label>
+            @Html.TextBoxFor(c => c.Title, new { @class = "input-larger required" })
+        </div>
     
         <div class="form-row">
             <label class="left">Task Body</label>
             <div class="textarea-wrap left">
-            @Html.TextAreaFor(c => c.Body, new { @class = "input-large ckeditor required" })
+            @Html.TextAreaFor(c => c.Body, new { @class = "input-large ckeditor" })
             </div>
         </div>
     
@@ -28,8 +33,12 @@
             @Html.DropDownList("ActionType", null, "Select action type", new { @class = "input-medium" })
         </div>
         <div class="form-row">
+            <label>All Day</label>
+            @Html.CheckBox("AllDay", Model == null ? true : Model.AllDay, new { @class = "" })
+        </div>        
+        <div class="form-row">
             <label>Due Date (optional)</label>
-            @Html.TextBox("DueDate", Model != null ? Model.DueDate.Value.ToString("dddd, d MMMM, yyyy") : string.Empty ,new { @class = "input-medium datepicker", placeholder = "Select date" })
+            @Html.TextBox("DueDate", Model != null ? Model.DueDate.Value.ToString("dddd, d MMMM, yyyy mm:hh:ss") : string.Empty ,new { @class = "input-medium datepicker", placeholder = "Select date" })
         </div>
     
         <div class="actions">

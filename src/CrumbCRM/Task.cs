@@ -15,28 +15,48 @@ namespace CrumbCRM
         [Key]
         [Column("TaskID")]
         public int ID { get; set; }       
+        
         public Guid? AssignedID { get; set; }
+        
         [ForeignKey("AssignedID")]
+        
         public User AssignedUser { get; set; }
+        
         public int? ItemID { get; set; }
+        
         public AreaType? AreaType { get; set; }
+        
         public ActionType ActionType { get; set; }
+
         [Required]
+        public string Title { get; set; }
+
         public string Body { get; set; }        
+        
         public DateTime? Active { get; set; }        
+        
         public int? DeactivatedBy { get; set; }        
+        
         public DateTime? DueDate { get; set; }        
+        
         public DateTime ModifiedDate { get; set; }        
+        
         public DateTime CreatedDate { get; set; } 
+        
         public DateTime? Deleted { get; set; }
+        
         public Guid AssignedByID { get; set; }
+        
         [ForeignKey("AssignedByID")]
         public User AssignedByUser { get; set; }
+
+        public bool AllDay { get; set; }
 
         public Task()
         {
             CreatedDate = DateTime.Now;
             ModifiedDate = DateTime.Now;
+            AllDay = true;
         }
     }
 }
