@@ -8,7 +8,7 @@
         <div class="left">
             <form class="inline hidden">
                 <input type="checkbox" /></form>
-            <span class="txt-large no-bold">@Html.Raw(CrumbCRM.Web.Helpers.HtmlHelper.StripHtml(item.Body)),  @item.AssignedByUser.FullName</span>
+            <span class="txt-large no-bold"><a href="javascript;" class="html-pop" data-modal-content="@System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(item.Body))">@Html.Raw(item.Title)</a></span>
             <span class="edit hidden"><a href="/task/edit/@item.ID"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
             <span class="delete hidden"><a href="/task/delete/@item.ID"><i class="icon-small icon-dark icon-remove"></i>done</a></span>
         </div>

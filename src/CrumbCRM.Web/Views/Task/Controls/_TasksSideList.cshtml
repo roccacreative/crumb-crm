@@ -8,7 +8,7 @@
 @foreach (var item in Model)
 {
     <div>
-        <p>@Html.Raw(CrumbCRM.Web.Helpers.HtmlHelper.StripHtml(item.Body))<span class="hidden"><a href="/task/delete/@item.ID" title="Mark done"><i class="icon-small icon-dark icon-remove"></i></a></span></p>
+        <p>@Html.Raw(item.Title)<span class="hidden"><a href="/task/delete/@item.ID" title="Mark done"><i class="icon-small icon-dark icon-remove"></i></a></span></p>
     </div>
 
 }
