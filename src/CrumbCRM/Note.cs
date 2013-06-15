@@ -12,15 +12,23 @@ namespace CrumbCRM
     public class Note
     {
         [Key]
-        [Column("ID")]
+        [Column("NoteID")]
         public int ID { get; set; }
+        
         public Guid AuthorID { get; set; }        
+        
         public int ItemID { get; set; }        
+        
         public NoteType Type { get; set; }
+        
         public NoteActionType Action { get; set; }
+
         public string Body { get; set; }        
+        
         public DateTime ModifiedDate { get; set; }        
+        
         public DateTime CreatedDate { get; set; }        
+        
         public DateTime? Deleted { get; set; }
 
         public Note()

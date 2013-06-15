@@ -37,18 +37,6 @@ namespace CrumbCRM.Web.Controllers
             _membershipService = membershipService;
         }
 
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult Edit(Note note, FormCollection form)
-        {
-            note.Body = Helpers.HtmlHelper.CleanHtml(form["Body"]);
-            _noteService.Save(note);
-            TempData.Add("StatusMessage", "Note edited");
-            int itemID = note.ItemID;
-            int type = (int)note.Type;
-            return RedirectToAction("View", new { id = itemID, type = type });
-        }
-
         public ActionResult Delete(int id)
         {
             Note note = _noteService.GetByID(id);
@@ -66,14 +54,27 @@ namespace CrumbCRM.Web.Controllers
             model.Note.ItemID = model.ItemID;
             model.Note.Type = model.NoteType;
             model.Note.AuthorID = _membershipService.GetCurrentMember().UserId;
+            model.Note.Action = (NoteActionType)Convert.ToInt32(form["ActionType"]);
             _noteService.Save(model.Note);
 
             TempData.Add("Message", "Note added");
 
             int itemID = model.Note.ItemID;
             int type = (int)model.Note.Type;
-            
-            return Redirect(Request.UrlReferrer.AbsoluteUri);
+
+            switch (model.NoteType)
+            {
+                case NoteType.Lead:
+                    return RedirectToAction("View", "Lead", new { id = model.ItemID });
+                case NoteType.Contact:
+                    return RedirectToAction("View", "Contact", new { id = model.ItemID });
+                case NoteType.Sale:
+                    return RedirectToAction("View", "Sale", new { id = model.ItemID });
+                case NoteType.Quote:
+                    return RedirectToAction("View", "Quote", new { id = model.ItemID });
+                default:
+                    return Redirect(Request.UrlReferrer.AbsoluteUri);
+            }
         }
 
         public JsonResult AddNote(Note note, FormCollection form)
@@ -104,6 +105,8 @@ namespace CrumbCRM.Web.Controllers
                     break;
             }
 
+            ViewData.SelectListEnumViewData<NoteActionType>("ActionType", true);
+
             return View("Add", model);
         }
 
@@ -127,6 +130,8 @@ namespace CrumbCRM.Web.Controllers
                     model.ParentItem = _leadService.GetByID(model.Note.ItemID);
                     break;
             }
+
+            ViewData.SelectListEnumViewData<NoteActionType>("ActionType", true, (int?)model.Note.Action);
 
             return View("Add", model); 
         }

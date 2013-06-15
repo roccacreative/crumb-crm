@@ -9,6 +9,8 @@ namespace CrumbCRM.Enums
     public enum NoteActionType
     {
         General = 1,
-        Call = 2
+        Call = 2,
+        Negative = 3,
+        Email = 4
     }
 }
