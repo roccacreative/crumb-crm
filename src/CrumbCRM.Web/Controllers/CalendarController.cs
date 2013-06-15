@@ -62,10 +62,10 @@ namespace CrumbCRM.Web.Controllers
                 events.Add(new
                 {
                     id = item.ID,
-                    title = CrumbCRM.Web.Helpers.HtmlHelper.StripHtml(item.Body),
+                    title = CrumbCRM.Web.Helpers.HtmlHelper.StripHtml(item.Title),
                     start = String.Format("{0:F}", item.DueDate),
-                    //end = String.Format("{0:F}", DateTime.Now),
-                    allDay = true,
+                    end = item.AllDay ? null : String.Format("{0:F}", item.DueDate.Value.AddMinutes(15)),
+                    allDay = item.AllDay,
                     backgroundColor = bg,
                     borderColor = bg
                 });   
