@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrumbCRM.Services", "CrumbC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrumbCRM.Web", "CrumbCRM.Web\CrumbCRM.Web.csproj", "{EBA9D2E1-5339-4EEF-9D4D-4D3F994B9EDE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7576B436-CBA1-4C5E-8879-92FEB0314008}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A95571D5-B946-4E32-8BD6-50784E6B08D9}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe

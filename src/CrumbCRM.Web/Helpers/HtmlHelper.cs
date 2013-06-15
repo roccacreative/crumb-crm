@@ -22,9 +22,14 @@ namespace CrumbCRM.Web.Helpers
 
         public static string StripHtml(string html)
         {
-            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(html);
-            return doc.DocumentNode.InnerText;
+            if (!string.IsNullOrEmpty(html))
+            {
+                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                doc.LoadHtml(html);
+                return doc.DocumentNode.InnerText;
+            }
+
+            return html;
         }
 
     }

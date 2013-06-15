@@ -139,6 +139,26 @@ h4 {
             text-decoration: underline;
         }
 
+.lead-item > form {
+    display: inline-block;
+    position: relative;
+    bottom: -18px;
+    margin-right: 2px;
+}
+
+.lead-item .wide {
+    width: 85%;
+}
+.lead-item .top {
+    width: 100%;
+}
+.top {
+    margin: 0 0 2px 0;
+}
+
+.item:hover .hide-on-hover {
+    display: none;
+}
 
 header {
 	background: #444;
@@ -409,7 +429,7 @@ form.inline {
 
 form label {
 	width: 160px;
-	margin: 0 10px 0 0;
+	margin: 15px 10px 0 0;
 	text-align: right;
 	display: inline-block;
 }
@@ -490,7 +510,7 @@ form select.input-large { width: 337px }
 	background: #4183c4 url('/content/images/icons/large/light/redo2.png') center center no-repeat;
 	display: block;
 	height: 100%;
-	max-height: 54px;
+	max-height: 69px;
 	width: 24px;
 	position: absolute;
 	top: 0;
@@ -799,4 +819,13 @@ hr {
 }
 .p-high {
     background: #29BF00;
+}
+
+.input-larger {
+    padding: 10px !important;
+    width:570px;
+}
+
+.blockPage .input-full {
+    width: 97% !important;
 }

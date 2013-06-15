@@ -4,36 +4,54 @@
 }
 @foreach (var item in Model)
 {
-    <div class="item" data-id="@item.ID" data-type="lead">
-        <div class="left">
-            <form class="inline hidden">
+    <div class="item lead-item" data-id="@item.ID" data-type="lead">
+
+            <form class="inline hidden left">
                 <input type="checkbox" />
             </form>
-            <span class="txt-large no-bold"><a href="@Url.Action("View", "Lead", new { id = item.ID })" class="tooltip" title="@(item.LastNote != null ? Html.Raw(CrumbCRM.Web.Helpers.HtmlHelper.StripHtml(item.LastNote.Body)).ToString() : "View/Add Notes")">@item.FirstName @item.LastName @item.JobTitle, <span class="company-name">@(item.CompanyID.HasValue ? item.Company.CompanyName : item.CompanyName)</span></a></span>
-            
-            @if (item.Warm == true)
-            {
-                <span class="warm">warm</span>
-            }            
-            @if (item.Priority != null)
-            {
-                <span class="p-@item.Priority.ToString().ToLower()">@item.Priority.ToString().ToLower()</span>
-            }
-            
-            <span class="edit hidden"><a href="/lead/edit/@item.ID"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
-            <span class="delete hidden"><a href="/lead/delete/@item.ID"><i class="icon-small icon-dark icon-remove"></i>void</a></span>
-        </div>
-        <!-- /left -->
+   
+            <div class="left wide">
+                
+                <div class="top lighter smaller">
+
+                <span class="hide-on-hover">Account manager: @item.OwnerUser.Username</span>
+
+                <span class="hidden smaller">
+                    <span>email: <a href="#">@item.Email</a></span>
+                    <span>tel: <a href="#">@item.Mobile</a></span>
+                </span>
+
+                    <span class="right">                                          
+                        <span class="edit hidden"><a href="/lead/edit/@item.ID">edit</a></span> <span class="delete hidden"><a href="/lead/delete/@item.ID">void</a></span>
+                    </span>
+
+                </div>
+
+                <div class="bottom">
+                    <span class="txt-large no-bold">
+                        <a href="@Url.Action("View", "Lead", new { id = item.ID })" class="tooltip" title="@(item.LastNote != null ? Html.Raw(CrumbCRM.Web.Helpers.HtmlHelper.StripHtml(item.LastNote.Body)).ToString() : "View/Add Notes")">
+                            @item.FirstName @item.LastName @item.JobTitle, 
+                        <span class="company-name">@(item.CompanyID.HasValue ? item.Company.CompanyName : item.CompanyName)</span>
+                        </a>
+                    </span>                
+                    @if (item.Warm == true)
+                    {
+                        <span class="warm">warm</span>
+                    }
+                    @if (item.Priority != null)
+                    {
+                        <span class="p-@item.Priority.ToString().ToLower()">@item.Priority.ToString().ToLower()</span>
+                    }
+                </div> <!-- /bottom -->
+
+            </div> <!-- /left -->
 
         <div class="right lighter hidden">
-            <span>email: <a href="#">@item.Email</a></span>
-            <span>tel: <a href="#">@item.Mobile</a></span>
             <a href="/lead/convert/@item.ID?type=1" class="btn convert btn-secondary">convert</a>
         </div>
         <div class="right">
             <span class="state" data-next-stage="qualified"></span>
         </div>
-
     </div> <!-- /item -->
 }
 @if (ViewBag.Next != null)

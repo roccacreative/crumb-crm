@@ -28,7 +28,7 @@
         @Html.Hidden("ItemID", Model.Sale.ID)
         @Html.Hidden("NoteType", CrumbCRM.NoteType.Sale)
         <div class="form-row">
-            @Html.TextAreaFor(c => c.Note.Body, 8, 10, new { @class = "input-full", placeholder = "Note" })
+            @Html.TextAreaFor(c => c.Note.Body, 8, 10, new { @class = "input-full ckeditor", placeholder = "Note" })
         </div>
         <div class="actions">
             <input type="submit" value="Add Note" class="btn btn-primary" />
@@ -40,7 +40,7 @@
             <form>
                 <input type="checkbox" />
             </form>
-            <a href="javascript:;" data-action="/lead/delete/" class="btn btn-check-delete nodisplay btn-secondary"><i class="icon icon-small icon-light icon-remove"></i>delete selected</a>
+            <a href="javascript:;" data-action="/note/delete/" class="btn btn-check-delete nodisplay btn-secondary"><i class="icon icon-small icon-light icon-remove"></i>delete selected</a>
             <a href="@Url.Action("Add", "Note", new { id = Model.Sale.ID, type = ((int)CrumbCRM.NoteType.Sale) })" class="btn btn-primary"><i class="icon-small icon-add"></i>add note</a>
 
             <form class="inline-search" id="stream-search">
