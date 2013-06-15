@@ -11,8 +11,9 @@
 
     <link href="~/bundles/styles" rel="stylesheet" type="text/css" />
 
-    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js"></script>
+    <script src="~/Scripts/jquery-2.0.2.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.min.js"></script>
+    <script src="~/Scripts/jquery.migrate.js"></script>
 
     <script src="~/Scripts/plugins/fullcalendar/fullcalendar.js"></script>
     <script src="~/Scripts/jquery.calendar.js"></script>
@@ -29,7 +30,8 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <script src="~/Scripts/jquery.tokeninput.js"></script>
-                        
+    <script src="~/Scripts/jquery-ui-timepicker.js"></script>
+
     <script src="~/Scripts/main.js"></script>
 </head>
 
@@ -42,11 +44,11 @@
 
             <ul class="nav">
                 <li><a @(controller.Equals("home") ? "class=active" : string.Empty) href="/"><i class="icon icon-light icon-dashboard icon-small @(controller.Equals("home") ? "icon-active" : string.Empty)"></i><span>dashboard</span></a></li>
-                <li><a @(controller.Equals("lead") ? "class=active" : string.Empty) href="/lead"><i class="icon-light icon-small icon icon-leads  @(controller.Equals("lead") ? "icon-active" : string.Empty)"></i><span>leads</span></a></li>
+                <li><a @(controller.Equals("lead") ? "class=active" : string.Empty) href="/leads"><i class="icon-light icon-small icon icon-leads  @(controller.Equals("lead") ? "icon-active" : string.Empty)"></i><span>leads</span></a></li>
                 <li><a @(controller.Equals("contact") ? "class=active" : string.Empty) href="/contact"><i class="icon-light icon-small icon icon-contact  @(controller.Equals("contact") ? "icon-active" : string.Empty)"></i><span>contacts</span></a></li>
-                <li><a @(controller.Equals("sale") ? "class=active" : string.Empty) href="/sale"><i class="icon-light icon-small icon icon-deals  @(controller.Equals("sale") ? "icon-active" : string.Empty)"></i><span>sales</span></a></li>
-                <li><a @(controller.Equals("task") ? "class=active" : string.Empty) href="/task"><i class="icon-light icon-small icon icon-tasks  @(controller.Equals("task") ? "icon-active" : string.Empty)"></i><span>tasks</span></a></li>
-                <li><a @(controller.Equals("quote") ? "class=active" : string.Empty) href="/quote"><i class="icon-light icon-small icon icon-quote  @(controller.Equals("quote") ? "icon-active" : string.Empty)"></i> <span>quote</span></a></li>
+                <li><a @(controller.Equals("sale") ? "class=active" : string.Empty) href="/sales"><i class="icon-light icon-small icon icon-deals  @(controller.Equals("sale") ? "icon-active" : string.Empty)"></i><span>sales</span></a></li>
+                <li><a @(controller.Equals("task") ? "class=active" : string.Empty) href="/tasks"><i class="icon-light icon-small icon icon-tasks  @(controller.Equals("task") ? "icon-active" : string.Empty)"></i><span>tasks</span></a></li>
+                <li><a @(controller.Equals("quote") ? "class=active" : string.Empty) href="/quotes"><i class="icon-light icon-small icon icon-quote  @(controller.Equals("quote") ? "icon-active" : string.Empty)"></i> <span>quote</span></a></li>
                 <li><a @(controller.Equals("invoice") ? "class=active" : string.Empty) href="/invoice"><i class="icon-light icon-small icon icon-invoice  @(controller.Equals("invoice") ? "icon-active" : string.Empty)"></i><span>invoices</span></a></li>
                 <li><a @(controller.Equals("report") ? "class=active" : string.Empty) href="/report" class="nodisplay"><i class="icon-light icon-small icon icon-reports  @(controller.Equals("report") ? "icon-active" : string.Empty)"></i><span>reports</span></a></li>
             </ul>
