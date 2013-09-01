@@ -15,8 +15,10 @@ using CrumbCRM.Web.Helpers;
 namespace CrumbCRM.Web.Controllers
 {
     [Authorize]
-    public class ContactController : Controller
+    public class ContactsController : Controller
     {
+        #region Services
+        
         private readonly INoteService _noteService;
         private readonly IContactService _contactService;
         private readonly ILeadService _leadService;
@@ -25,7 +27,9 @@ namespace CrumbCRM.Web.Controllers
         private readonly IActivityService _activityService;
         private readonly ViewDataHelper _initHelper;
 
-        public ContactController(
+        #endregion
+
+        public ContactsController(
             INoteService noteService, 
             IContactService contactService, 
             ILeadService leadService, 

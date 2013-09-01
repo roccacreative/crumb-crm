@@ -45,13 +45,6 @@
             <label>Account Manager</label>
             @Html.DropDownList("Members", null, "Please select user", new { @class = "input-large" })
         </div>
-    
-        <div class="form-row">
-            <label>Private</label>
-            @Html.CheckBoxFor(c => c.Private, null)
-        </div>
-    
-
 
         <div class="actions">
             <input type="submit" value="Add Contact" class="btn btn-primary" />

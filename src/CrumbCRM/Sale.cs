@@ -39,9 +39,7 @@ namespace CrumbCRM
         
         public List<Note> Notes { get; set; }
         
-        [Required]        
-        public bool Private { get; set; }
-                
+               
         public DateTime ModifiedDate { get; set; }
         
         public DateTime CreatedDate { get; set; }
@@ -63,7 +61,6 @@ namespace CrumbCRM
         {
             CreatedDate = DateTime.Now;
             ModifiedDate = DateTime.Now;
-            Private = false;
             Tags = new List<SaleTag>();
         }
     }

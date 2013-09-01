@@ -40,10 +40,6 @@
             <span class="help">Useful for search terms and grouping</span>
         </div>          
         <div class="form-row">
-            <label>Private</label>
-            @Html.CheckBoxFor(c => c.Private, null)
-        </div>
-        <div class="form-row">
             <label>Priority</label>
             @Html.DropDownList("PriorityType", null , "Please select priority", new { @class = "input-large" })
         </div>

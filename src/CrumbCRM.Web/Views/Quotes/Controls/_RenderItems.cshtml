@@ -9,8 +9,8 @@
             <form class="inline hidden">
                 <input type="checkbox" /></form>
             <span class="txt-large no-bold"><a href="@Url.Action("View", "Quote", new { id = item.ID })" class="tooltip" title="View/Add Notes">@item.Title</a></span>
-            <span class="edit hidden"><a href="/quote/edit/@item.ID"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
-            <span class="delete hidden"><a href="/quote/delete/@item.ID"><i class="icon-small icon-dark icon-remove"></i>delete</a></span>
+            <span class="edit hidden"><a href="@Url.Action("Edit", "Quotes", new { id = item.ID })"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
+            <span class="delete hidden"><a href="@Url.Action("Delete", "Quotes", new { id = item.ID })"><i class="icon-small icon-dark icon-remove"></i>delete</a></span>
         </div>
         <!-- /left -->
 

@@ -45,7 +45,6 @@ namespace CrumbCRM
         public string County { get; set; }
         public string Postcode { get; set; }
         [Required]
-        public bool Private { get; set; }
         public bool Warm { get; set; }
         public DateTime ModifiedDate { get; set; }
         public DateTime CreatedDate { get; set; }
@@ -65,7 +64,6 @@ namespace CrumbCRM
         {
             CreatedDate = DateTime.Now;
             ModifiedDate = DateTime.Now;
-            Private = false;
             Tags = new List<LeadTag>();
         }        
     }

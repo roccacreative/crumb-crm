@@ -33,12 +33,8 @@
             @Html.DropDownList("ActionType", null, "Select action type", new { @class = "input-medium" })
         </div>
         <div class="form-row">
-            <label>All Day</label>
-            @Html.CheckBox("AllDay", Model == null ? true : Model.AllDay, new { @class = "" })
-        </div>        
-        <div class="form-row">
             <label>Due Date (optional)</label>
-            @Html.TextBox("DueDate", Model != null ? Model.DueDate.Value.ToString("dddd, d MMMM, yyyy mm:hh:ss") : string.Empty ,new { @class = "input-medium datepicker", placeholder = "Select date" })
+            @Html.TextBox("DueDate", Model != null && Model.DueDate != null ? Model.DueDate.Value.ToString("dddd, d MMMM, yyyy") : string.Empty ,new { @class = "input-medium datepicker", placeholder = "Select date" })
         </div>
     
         <div class="actions">

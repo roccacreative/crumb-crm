@@ -11,8 +11,8 @@
                 <input type="checkbox" />
             </form>
             <span class="txt-large no-bold">@item.Title</span>
-            <span class="edit hidden"><a href="/quote/edititem/@item.ID"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
-            <span class="delete hidden"><a href="/quote/deleteitem/@item.ID"><i class="icon-small icon-dark icon-remove"></i>delete</a></span>
+            <span class="edit hidden"><a href="@Url.Action("EditItem", "Quotes", new { id = item.ID })"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
+            <span class="delete hidden"><a href="@Url.Action("DeleteItem", "Quotes", new { id = item.ID })"><i class="icon-small icon-dark icon-remove"></i>delete</a></span>
         </div>
         <!-- /left -->
 

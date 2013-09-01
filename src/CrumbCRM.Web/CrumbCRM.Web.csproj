@@ -230,7 +230,7 @@
     <Compile Include="Controllers\ActivitiesController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\CampaignsController.cs" />
-    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
@@ -240,7 +240,7 @@
     <Compile Include="Controllers\LeadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
-    <Compile Include="Controllers\QuoteController.cs" />
+    <Compile Include="Controllers\QuotesController.cs" />
     <Compile Include="Helpers\HtmlHelper.cs" />
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -2816,7 +2816,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Invoice\Index.cshtml" />
-    <Content Include="Views\Quote\Index.cshtml" />
+    <Content Include="Views\Quotes\Index.cshtml" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js.map">
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
@@ -2826,8 +2826,8 @@
     <Content Include="Views\Lead\Controls\_RenderItems.cshtml" />
     <Content Include="Views\Sale\Controls\_RenderItems.cshtml" />
     <Content Include="Views\Task\Controls\_RenderItems.cshtml" />
-    <Content Include="Views\Contact\Controls\_RenderItems.cshtml" />
-    <Content Include="Views\Quote\Controls\_RenderItems.cshtml" />
+    <Content Include="Views\Contacts\Controls\_RenderItems.cshtml" />
+    <Content Include="Views\Quotes\Controls\_RenderItems.cshtml" />
     <Content Include="Views\Invoice\Controls\_RenderItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -2856,16 +2856,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Quote\Add.cshtml" />
+    <Content Include="Views\Quotes\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Contact\Add.cshtml" />
+    <Content Include="Views\Contacts\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Contact\AddCompany.cshtml" />
+    <Content Include="Views\Contacts\AddCompany.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Lead\Add.cshtml" />
@@ -2916,9 +2916,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\crm.pubxml" />
-    <Content Include="Views\Quote\View.cshtml" />
-    <Content Include="Views\Quote\Controls\_QuoteItemsList.cshtml" />
-    <Content Include="Views\Quote\AddItem.cshtml" />
+    <Content Include="Views\Quotes\View.cshtml" />
+    <Content Include="Views\Quotes\Controls\_QuoteItemsList.cshtml" />
+    <Content Include="Views\Quotes\AddItem.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

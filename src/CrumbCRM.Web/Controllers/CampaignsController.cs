@@ -51,15 +51,22 @@ namespace CrumbCRM.Web.Controllers
         public ActionResult RemoveCampaign(int id)
         {
             List<Campaign> campaigns = (List<Campaign>)TempData["SelectedCampaigns"];
-
             if (campaigns == null)
                 campaigns = new List<Campaign>();
 
             var campaign = campaigns.FirstOrDefault(t => t.ID == id);
             campaigns.Remove(campaign);
 
-            TempData["SelectedCampaigns"] = campaigns;
-            TempData.Keep("SelectedCampaigns");
+            if (campaigns.Count > 0)
+            {
+                TempData["SelectedCampaigns"] = campaigns;
+                TempData.Keep("SelectedCampaigns");
+            }
+            else
+            {
+                TempData["SelectedCampaigns"] = null;
+                TempData.Remove("SelectedCampaigns");
+            }
 
             return Redirect(Request.UrlReferrer.AbsoluteUri);
         }

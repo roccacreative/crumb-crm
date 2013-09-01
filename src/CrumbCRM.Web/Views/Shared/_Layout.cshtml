@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <title>@ViewBag.Title</title>
-    <link rel="shortcut icon" href="/content/images/favicon.ico"/>
+    <link rel="shortcut icon" href="/content/images/favicon.ico" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
     <link href="~/bundles/styles" rel="stylesheet" type="text/css" />
@@ -45,10 +45,10 @@
             <ul class="nav">
                 <li><a @(controller.Equals("home") ? "class=active" : string.Empty) href="/"><i class="icon icon-light icon-dashboard icon-small @(controller.Equals("home") ? "icon-active" : string.Empty)"></i><span>dashboard</span></a></li>
                 <li><a @(controller.Equals("lead") ? "class=active" : string.Empty) href="/leads"><i class="icon-light icon-small icon icon-leads  @(controller.Equals("lead") ? "icon-active" : string.Empty)"></i><span>leads</span></a></li>
-                <li><a @(controller.Equals("contact") ? "class=active" : string.Empty) href="/contact"><i class="icon-light icon-small icon icon-contact  @(controller.Equals("contact") ? "icon-active" : string.Empty)"></i><span>contacts</span></a></li>
+                <li><a @(controller.Equals("contact") ? "class=active" : string.Empty) href="/contacts"><i class="icon-light icon-small icon icon-contact  @(controller.Equals("contacts") ? "icon-active" : string.Empty)"></i><span>contacts</span></a></li>
                 <li><a @(controller.Equals("sale") ? "class=active" : string.Empty) href="/sales"><i class="icon-light icon-small icon icon-deals  @(controller.Equals("sale") ? "icon-active" : string.Empty)"></i><span>sales</span></a></li>
-                <li><a @(controller.Equals("task") ? "class=active" : string.Empty) href="/tasks"><i class="icon-light icon-small icon icon-tasks  @(controller.Equals("task") ? "icon-active" : string.Empty)"></i><span>tasks</span></a></li>
-                <li><a @(controller.Equals("quote") ? "class=active" : string.Empty) href="/quotes"><i class="icon-light icon-small icon icon-quote  @(controller.Equals("quote") ? "icon-active" : string.Empty)"></i> <span>quote</span></a></li>
+                <li><a @(controller.Equals("task") ? "class=active" : string.Empty) href="/task"><i class="icon-light icon-small icon icon-tasks  @(controller.Equals("task") ? "icon-active" : string.Empty)"></i><span>tasks</span></a></li>
+                <li><a @(controller.Equals("quote") ? "class=active" : string.Empty) href="/quotes"><i class="icon-light icon-small icon icon-quote  @(controller.Equals("quote") ? "icon-active" : string.Empty)"></i><span>quote</span></a></li>
                 <li><a @(controller.Equals("invoice") ? "class=active" : string.Empty) href="/invoice"><i class="icon-light icon-small icon icon-invoice  @(controller.Equals("invoice") ? "icon-active" : string.Empty)"></i><span>invoices</span></a></li>
                 <li><a @(controller.Equals("report") ? "class=active" : string.Empty) href="/report" class="nodisplay"><i class="icon-light icon-small icon icon-reports  @(controller.Equals("report") ? "icon-active" : string.Empty)"></i><span>reports</span></a></li>
             </ul>
@@ -60,10 +60,10 @@
                 </form>
                 <ul class="nav">
                     <li class="drop-nav"><a href="javascript:;"><i class="icon icon-settings icon-small icon-light"></i><span>Settings</span></a>
-                    <ul class="sub-nav">
-                        <li><a href="@Url.Action("Index", "Members")"><i class="icon icon-dark icon-small icon-users"></i>Members</a></li>
-                        <li><a href="@Url.Action("LogOff", "Account")"><i class="icon icon-dark icon-small icon-exit"></i>Logout</a></li>
-                    </ul>
+                        <ul class="sub-nav">
+                            <li><a href="@Url.Action("Index", "Members")"><i class="icon icon-dark icon-small icon-users"></i>Members</a></li>
+                            <li><a href="@Url.Action("LogOff", "Account")"><i class="icon icon-dark icon-small icon-exit"></i>Logout</a></li>
+                        </ul>
 
                     </li>
                 </ul>

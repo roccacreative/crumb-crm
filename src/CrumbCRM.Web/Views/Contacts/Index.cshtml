@@ -4,9 +4,7 @@
 }
 
 <h1>Contacts</h1>
-
 <div class="width-wide left">
-
     @{
         if (ViewBag.Message != null)
         {
@@ -16,7 +14,6 @@
         </p>
         }
     }
-
     <div class="stream">
         <div class="stream-head">
             <form>
@@ -24,8 +21,8 @@
             </form>
             <a href="javascript:;" data-action="/contact/delete/" class="btn btn-check-delete nodisplay btn-secondary"><i class="icon icon-small icon-light icon-remove"></i>delete selected</a>
 
-            <a href="/contact/add" class="btn btn-primary"><i class="icon-small icon-add"></i>add person</a>
-            <a href="/contact/addcompany" class="btn btn-primary"><i class="icon-small icon-add"></i>add company</a>
+            <a href="@Url.Action("Add", "Contacts")" class="btn btn-primary"><i class="icon-small icon-add"></i>add person</a>
+            <a href="@Url.Action("AddCompany", "Contacts")" class="btn btn-primary"><i class="icon-small icon-add"></i>add company</a>
 
             <form class="inline-search" id="stream-search">
                 <input type="text" value="" placeholder="Search contacts" />
@@ -46,21 +43,18 @@
                                     <option value="desc">descending</option>
 
                                 }
-
                             </select>
                         </form>
             </div>
         </div>
         <div class="stream-content">
-        @{Html.RenderAction("RenderItems", "Contact", new { area = "Contact", page = 1 });}
+            @{Html.RenderAction("RenderItems", "Contacts", new { area = "Contact", page = 1 });}
         </div>
         <!-- /stream-content -->
     </div>
     <!-- /stream -->
 </div>
 <!-- /content-right -->
-
-
 <div class="width-side right no-mobile">
     <div class="box no-mobile dash-tasks">
         <h4>Tasks</h4>

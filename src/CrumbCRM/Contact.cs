@@ -59,7 +59,6 @@ namespace CrumbCRM
         {
             CreatedDate = DateTime.Now;
             ModifiedDate = DateTime.Now;
-            Private = false;
         }        
     }
 }

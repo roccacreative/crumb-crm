@@ -538,9 +538,6 @@ nav.stages-nav a:first-child {
 nav.stages-nav a:last-child {
 	border-top-right-radius: 3px;
 }
-nav.stages-nav a.active {
-	background: #f2f2f2;
-}
 nav.stages-nav a .total {
 	font-weight: 700;
 	display: block;
@@ -550,6 +547,9 @@ nav.stages-nav a .total {
 nav.stages-nav > a {
 	color:#777;
 	background:#f2f2f2;
+}
+nav.stages-nav a.active {
+	background: #fff !important;
 }
 
 
@@ -827,5 +827,5 @@ hr {
 }
 
 .blockPage .input-full {
-    width: 97% !important;
+    width: 50%;
 }

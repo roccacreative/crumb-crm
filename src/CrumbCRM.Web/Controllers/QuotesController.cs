@@ -15,7 +15,7 @@ using CrumbCRM.Web.Helpers;
 namespace CrumbCRM.Web.Controllers
 {
     [Authorize]
-    public class QuoteController : Controller
+    public class QuotesController : Controller
     {
         private readonly ILeadService _leadService;
         private readonly IContactService _contactService;
@@ -26,7 +26,7 @@ namespace CrumbCRM.Web.Controllers
         private readonly IQuoteService _quoteService;
         private readonly IInvoiceService _invoiceService;
 
-        public QuoteController(
+        public QuotesController(
             ILeadService LeadService, 
             IContactService contactService,
             IMembershipService membershipService,

@@ -3,7 +3,7 @@
     ViewBag.Title = "Add a Member";
 }
 
-<h1>Create Member<a href="/Lead" class="btn-back">Back</a></h1>
+<h1>Create Member<a href="@Url.Action("Index", "Members")" class="btn-back">Back</a></h1>
 <div class="width-wide left">
     @using (Html.BeginForm("Add", "Members", FormMethod.Post, new { @class = "box" }))
     {
