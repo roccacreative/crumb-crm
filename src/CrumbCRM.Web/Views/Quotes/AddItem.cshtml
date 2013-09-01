@@ -5,7 +5,7 @@
 
 <h1>Add quote<a href="/quote" class="btn-back">Back</a></h1>
 <div class="width-wide left">
-@using (Html.BeginForm("AddItem", "Quote", FormMethod.Post, new { @class = "box"}))
+@using (Html.BeginForm("AddItem", "Quotes", FormMethod.Post, new { @class = "box"}))
 {
     @Html.Hidden("QuoteID", Model.QuoteID)
     <div class="form-row">

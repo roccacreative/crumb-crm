@@ -67,11 +67,11 @@ namespace CrumbCRM.Web.Controllers
                 case NoteType.Lead:
                     return RedirectToAction("View", "Lead", new { id = model.ItemID });
                 case NoteType.Contact:
-                    return RedirectToAction("View", "Contact", new { id = model.ItemID });
+                    return RedirectToAction("View", "Contacts", new { id = model.ItemID });
                 case NoteType.Sale:
                     return RedirectToAction("View", "Sale", new { id = model.ItemID });
                 case NoteType.Quote:
-                    return RedirectToAction("View", "Quote", new { id = model.ItemID });
+                    return RedirectToAction("View", "Quotes", new { id = model.ItemID });
                 default:
                     return Redirect(Request.UrlReferrer.AbsoluteUri);
             }

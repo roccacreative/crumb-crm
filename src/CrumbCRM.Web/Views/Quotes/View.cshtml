@@ -10,10 +10,8 @@
         <a href="javascript:;" class="msg-close right">close</a>
     </p>
 }
-
-
 <div class="width-half left">
-    @using (Html.BeginForm("AddItem", "Quote", FormMethod.Post, new { @class = "box" }))
+    @using (Html.BeginForm("AddItem", "Quotes", FormMethod.Post, new { @class = "box" }))
     {
         <h4>Quote Items</h4>
         @Html.Hidden("QuoteID", Model.Quote.ID)
@@ -40,7 +38,7 @@
             </form>
         </div>
         <div class="stream-content">
-            @{Html.RenderAction("DisplayQuoteItems", "Quote", new { id = Model.Quote.ID });}
+            @{Html.RenderAction("DisplayQuoteItems", "Quotes", new { id = Model.Quote.ID });}
         </div>
         <!-- /stream-content -->
     </div>

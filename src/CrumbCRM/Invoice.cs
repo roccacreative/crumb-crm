@@ -152,7 +152,11 @@ namespace CrumbCRM
         public byte[] Print()
         {
             byte[] pdfBytes = ToPDF();
-            string filename = HttpContext.Current.Server.MapPath("~/Content/Temp/" + this.InvoiceNumber + ".pdf");
+            string folder = HttpContext.Current.Server.MapPath("~/Temp/");
+            string filename = folder + "/" + this.InvoiceNumber + ".pdf";
+
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
 
             if (File.Exists(filename))
                 File.Delete(filename);

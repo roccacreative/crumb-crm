@@ -49,7 +49,7 @@
 					</div>
 				</div>
 				<div class="stream-content">
-                @{Html.RenderAction("RenderItems", "Quote", new { area = "Quote", page = 1 });}
+                @{Html.RenderAction("RenderItems", "Quotes", new { area = "Quote", page = 1 });}
 				</div> <!-- /stream-content -->			
 			</div> <!-- /stream -->
 		</div> <!-- /content-right -->
@@ -65,7 +65,7 @@
 
 <div class="nodisplay">
     <div class="quotes-popup">
-        @using (Ajax.BeginForm("GenerateInvoice", "Quote", null, new AjaxOptions() { OnSuccess = "events.quoteSuccess" }, new { @class = "box" }))
+        @using (Ajax.BeginForm("GenerateInvoice", "Quotes", null, new AjaxOptions() { OnSuccess = "events.quoteSuccess" }, new { @class = "box" }))
         {
             @Html.Hidden("QuoteID", string.Empty)
             <div class="form-row">
