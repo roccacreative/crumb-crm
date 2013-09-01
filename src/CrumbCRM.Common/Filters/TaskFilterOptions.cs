@@ -18,7 +18,7 @@ namespace CrumbCRM.Filters
 
         public DateTime? EndDate { get; set; }
 
-        public Guid? AssignedID { get; set; }
+        public int? AssignedID { get; set; }
 
         public Enums.AreaType? Area { get; set; }
     }

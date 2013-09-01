@@ -75,7 +75,7 @@ namespace CrumbCRM.Web.Controllers
 
             //assign the task to a user
             if (!string.IsNullOrEmpty(form["Members"]))
-                task.AssignedID = new Guid(form["Members"].ToString());
+                task.AssignedID = Convert.ToInt32(form["Members"].ToString());
 
             //assign areatype (either sale or lead)
             if (!string.IsNullOrEmpty(form["AreaType"]))

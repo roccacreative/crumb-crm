@@ -53,7 +53,7 @@ namespace CrumbCRM.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && CrumbCRM.Security.WebSecurity.Login(model.UserName, model.Password, model.RememberMe) == Security.WebSecurity.MembershipLoginStatus.Success)
+            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, model.RememberMe))
             {
                 return RedirectToLocal(returnUrl);
             }
@@ -68,7 +68,7 @@ namespace CrumbCRM.Web.Controllers
 
         public ActionResult LogOff()
         {
-            CrumbCRM.Security.WebSecurity.Logout();
+            WebSecurity.Logout();
 
             return RedirectToAction("Index", "Home");
         }

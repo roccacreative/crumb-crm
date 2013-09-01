@@ -15,7 +15,7 @@ namespace CrumbCRM
         [Column("NoteID")]
         public int ID { get; set; }
         
-        public Guid AuthorID { get; set; }        
+        public int AuthorID { get; set; }        
         
         public int ItemID { get; set; }        
         

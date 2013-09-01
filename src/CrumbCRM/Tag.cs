@@ -15,7 +15,7 @@ namespace CrumbCRM
         public int ID { get; set; }
         public string Name { get; set; }
         public DateTime CreatedDate { get; set; }
-        public Guid CreatedByID { get; set; }
+        public int CreatedByID { get; set; }
         public DateTime? Deleted { get; set; }
     }
 

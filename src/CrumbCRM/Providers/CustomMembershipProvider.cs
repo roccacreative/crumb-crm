@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Security;
+using WebMatrix.WebData;
 
 namespace CrumbCRM.Providers
 {
-    public class CustomMembershipProvider : MembershipProvider
+    public class CustomMembershipProvider : SimpleMembershipProvider
     {
         [Inject]
         public IMembershipService MembershipService { get; set; }

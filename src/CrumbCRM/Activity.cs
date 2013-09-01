@@ -20,7 +20,7 @@ namespace CrumbCRM
 
         public int? ItemID { get; set; }
 
-        public Guid? UserID { get; set; }
+        public int? UserID { get; set; }
 
         [ForeignKey("UserID")]
         public User User { get; set; }

@@ -29,7 +29,7 @@ namespace CrumbCRM.Web.Helpers
             _campaignService = campaignService;
         }
 
-        public void InitializeMembers(ViewDataDictionary viewData, Guid? userId)
+        public void InitializeMembers(ViewDataDictionary viewData, int? userId)
         {
             var members = _membershipService.GetUsersInRole("Administrator");
             viewData.Add("Members", new SelectList(members, "UserId", "Username", userId.HasValue ? userId.Value : members.FirstOrDefault(u => u.Username == HttpContext.Current.User.Identity.Name).UserId));

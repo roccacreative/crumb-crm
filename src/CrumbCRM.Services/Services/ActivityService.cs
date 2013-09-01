@@ -40,7 +40,7 @@ namespace CrumbCRM.Services
 
         public int Create(string description, AreaType type, string userName = null, int? itemId = null)
         {
-            Guid userId = _membershipService.GetByUsername(userName).UserId;
+            int userId = _membershipService.GetByUsername(userName).UserId;
 
             return Save(new Activity()
             {

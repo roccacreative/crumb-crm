@@ -7,8 +7,8 @@
     <ProjectGuid>{84DCAC74-1553-4E8E-92B5-20B8D5B9B80F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CreativeCRM</RootNamespace>
-    <AssemblyName>CreativeCRM.Common</AssemblyName>
+    <RootNamespace>CrumbCRM</RootNamespace>
+    <AssemblyName>CrumbCRM.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>

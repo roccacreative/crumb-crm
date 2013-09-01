@@ -160,7 +160,7 @@ namespace CrumbCRM.Web.Controllers
                 sale.PersonID = Convert.ToInt32(form["People"]);
 
             if(!string.IsNullOrEmpty(form["Members"]))
-                sale.OwnerID = new Guid(form["Members"]);
+                sale.OwnerID = Convert.ToInt32(form["Members"]);
 
             if (!string.IsNullOrEmpty(form["PriorityType"]))
                 sale.Priority = (PriorityType)Enum.Parse(typeof(CrumbCRM.PriorityType), form["PriorityType"], true);

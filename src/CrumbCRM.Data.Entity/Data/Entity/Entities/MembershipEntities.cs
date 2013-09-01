@@ -105,7 +105,6 @@ namespace CrumbCRM.Data.Entity.Entities
 
                 User NewUser = new User
                 {
-                    UserId = Guid.NewGuid(),
                     Username = username,
                     Password = HashedPassword,
                     IsApproved = isApproved,
@@ -243,16 +242,10 @@ namespace CrumbCRM.Data.Entity.Entities
 
         public MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
-            if (providerUserKey is Guid) { }
-            else
-            {
-                return null;
-            }
-
             using (CrumbCRMEntities Context = new CrumbCRMEntities())
             {
                 User User = null;
-                User = Context.Users.Include("Roles").FirstOrDefault(u => u.UserId == (Guid)providerUserKey);
+                User = Context.Users.Include("Roles").FirstOrDefault(u => u.UserId == (int)providerUserKey);
                 if (User != null)
                 {
                     if (userIsOnline)

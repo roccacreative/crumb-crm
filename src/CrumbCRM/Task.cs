@@ -16,7 +16,7 @@ namespace CrumbCRM
         [Column("TaskID")]
         public int ID { get; set; }       
         
-        public Guid? AssignedID { get; set; }
+        public int? AssignedID { get; set; }
         
         [ForeignKey("AssignedID")]
         
@@ -45,7 +45,7 @@ namespace CrumbCRM
         
         public DateTime? Deleted { get; set; }
         
-        public Guid AssignedByID { get; set; }
+        public int AssignedByID { get; set; }
         
         [ForeignKey("AssignedByID")]
         public User AssignedByUser { get; set; }

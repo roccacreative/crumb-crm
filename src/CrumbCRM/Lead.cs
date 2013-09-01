@@ -18,7 +18,7 @@ namespace CrumbCRM
         public int OrganisationID { get; set; }
         public int DepartmentID { get; set; }
                 
-        public Guid? OwnerID { get; set; }
+        public int? OwnerID { get; set; }
         
         [ForeignKey("OwnerID")]
         public User OwnerUser { get; set; }

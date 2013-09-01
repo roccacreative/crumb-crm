@@ -71,7 +71,7 @@ namespace CrumbCRM.Web.Controllers
             if (contact.ID == 0)
                 isNew = true;                
 
-            contact.OwnerID = new Guid(form["Members"].ToString());            
+            contact.OwnerID = Convert.ToInt32(form["Members"].ToString());            
 
             if (contact.Type == ContactType.Person && !string.IsNullOrEmpty(contact.CompanyName))
             {
@@ -88,7 +88,7 @@ namespace CrumbCRM.Web.Controllers
                 company.City = contact.City;
                 company.County = contact.County;
                 company.Postcode = contact.Postcode;
-                company.OwnerID = new Guid(form["Members"].ToString());
+                company.OwnerID = Convert.ToInt32(form["Members"].ToString());
 
                 _contactService.Save(company);
 

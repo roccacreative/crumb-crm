@@ -70,6 +70,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity.cs" />
@@ -90,7 +91,6 @@
     <Compile Include="Security\Crypto.cs" />
     <Compile Include="Security\Role.cs" />
     <Compile Include="Security\User.cs" />
-    <Compile Include="Security\WebSecurity.cs" />
     <Compile Include="Services\IActivityService.cs" />
     <Compile Include="Services\ICampaignService.cs" />
     <Compile Include="Services\IMembershipService.cs" />

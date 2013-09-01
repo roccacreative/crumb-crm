@@ -29,7 +29,7 @@ namespace CrumbCRM
         [ForeignKey("PersonID")]
         public Contact Person { get; set; }
 
-        public Guid? OwnerID { get; set; }
+        public int? OwnerID { get; set; }
 
         [ForeignKey("OwnerID")]
         public User OwnerUser { get; set; }
