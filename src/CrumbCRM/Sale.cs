@@ -26,7 +26,7 @@ namespace CrumbCRM
 
         public int PersonID { get; set; }
 
-        [NotMapped]
+        [ForeignKey("PersonID")]
         public Contact Person { get; set; }
 
         public Guid? OwnerID { get; set; }

@@ -33,6 +33,7 @@ namespace CrumbCRM.Data.Entity.Entities
                 .Include("OwnerUser")
                 .Include("Tags")
                 .Include("Tags.Tag")
+                .Include("Person")
                 .FirstOrDefault(i => i.ID == id));
 
             sale.LastNote = Context.Note.Where(n => n.ItemID == id && n.Type == NoteType.Lead).OrderByDescending(n => n.CreatedDate).FirstOrDefault();
@@ -41,17 +42,15 @@ namespace CrumbCRM.Data.Entity.Entities
 
         private Sale Load(Sale sale)
         {
-            sale.Person = new ContactEntities().GetByID(sale.PersonID);
             sale.Company = new ContactEntities().GetByID(sale.CompanyID);
+            sale.LastNote = Context.Note.Where(n => n.ItemID == n.ID && n.Type == NoteType.Lead).OrderByDescending(n => n.CreatedDate).FirstOrDefault();
+
             return sale;
         }
 
         public List<Sale> GetAll(Filters.SaleFilterOptions options = null, PagingSettings paging = null)
         {
             var sales = QuerySales(options, paging);
-
-            sales.ToList().ForEach(l => l.LastNote = Context.Note.Where(n => n.ItemID == n.ID && n.Type == NoteType.Lead).OrderByDescending(n => n.CreatedDate).FirstOrDefault());
-
             return Load(sales.ToList());
         }
 
@@ -61,6 +60,7 @@ namespace CrumbCRM.Data.Entity.Entities
                 .Include("OwnerUser")
                 .Include("Tags")
                 .Include("Tags.Tag")
+                .Include("Person")
                 .Where(q => !q.Deleted.HasValue);
 
             if (options != null)
