@@ -1,6 +1,6 @@
 ﻿@model CrumbCRM.Web.Models.MembersViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Members";
 }
 
 <h1>Members</h1>
@@ -37,8 +37,7 @@
                         <form class="inline hidden">
                             <input type="checkbox" />
                         </form>
-                        <span class="txt-large no-bold"><a href="@Url.Action("View", "Members", new { id = item.Username, type = (int)CrumbCRM.NoteType.Contact })">@item.Username</a></span>
-                        <span class="edit hidden"><a href="@Url.Action("Edit", "Members", new { id = item.Username })"><i class="icon-small icon-dark icon-edit"></i>edit</a></span>
+                        <span class="txt-large no-bold">@item.Username</span>
                         <span class="delete hidden"><a href="@Url.Action("Delete", "Members", new { id = item.Username })"><i class="icon-small icon-dark icon-remove"></i>delete</a></span>
                     </div>
                     <!-- /left -->

@@ -2897,7 +2897,6 @@
   <ItemGroup>
     <Content Include="Views\Members\Add.cshtml" />
     <Content Include="Views\Members\Index.cshtml" />
-    <Content Include="Views\Members\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Note\Controls\_NotesList.cshtml" />
