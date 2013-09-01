@@ -49,33 +49,32 @@ namespace CrumbCRM.Web.Controllers
         public ActionResult Index()
         {
             var model = new HomeViewModel();
-            var leads = _leadService.GetAll();
-            var sales = _saleService.GetAll();
             
             //last months sales
-            model.Prev30Leads = leads.Where(x => (x.CreatedDate > (DateTime.Now - TimeSpan.FromDays(60)) && x.CreatedDate < (DateTime.Now - TimeSpan.FromDays(30)))).Count();
-            model.Prev30Sales = sales.Where(x => (x.Status.Value != SaleType.Unqualified && x.Status.Value != SaleType.Unqualified && x.CreatedDate > (DateTime.Now - TimeSpan.FromDays(60)) && x.CreatedDate < (DateTime.Now - TimeSpan.FromDays(30)))).Count();
+            model.Prev30Leads = _leadService.Total(new LeadFilterOptions() { StartDate = (DateTime.Now - TimeSpan.FromDays(60)), EndDate = (DateTime.Now - TimeSpan.FromDays(30))});
+            model.Prev30Sales = _saleService.Total(new SaleFilterOptions() { IsQualified = true, StartDate = (DateTime.Now - TimeSpan.FromDays(30)), EndDate = (DateTime.Now - TimeSpan.FromDays(30)) });
+            
             //this months sales
-            model.Last30Leads = leads.Where(x => x.CreatedDate > (DateTime.Now - TimeSpan.FromDays(30))).Count();
-            model.Last30Sales = sales.Where(x => (x.Status.Value != SaleType.Unqualified && x.Status.Value != SaleType.Unqualified && x.CreatedDate > (DateTime.Now - TimeSpan.FromDays(30)))).Count();
+            model.Last30Leads = _leadService.Total(new LeadFilterOptions() { StartDate = (DateTime.Now - TimeSpan.FromDays(30)) });
+            model.Last30Sales = _saleService.Total(new SaleFilterOptions() { IsQualified = true, StartDate = (DateTime.Now - TimeSpan.FromDays(30)) });
             
             //other this month
-            model.TotalActiveDeals = sales.Where(x => x.Status.Value != SaleType.Unqualified && x.Status.Value != SaleType.Unqualified).Count();
+            model.TotalActiveDeals = _saleService.Total(new SaleFilterOptions() { IsQualified = true });
 
             //total pipeline value
-            model.TotalSalesPipeline = sales.Sum(x => x.Value);
+            model.TotalSalesPipeline = _saleService.Sum(new SaleFilterOptions() { IsQualified = true });
 
-            model.Last30TotalEmailed = leads.Where(x => x.Status.HasValue && x.Status.Value == LeadType.Emailed).Count();
-            model.Last30TotalNoAnswer = leads.Where(x => x.Status.HasValue && x.Status.Value == LeadType.NoAnswer).Count();
-            model.Last30TotalNotInterested = leads.Where(x => x.Status.HasValue && x.Status.Value == LeadType.NotInterested).Count();
-            model.Last30TotalCallback = leads.Where(x => x.Status.HasValue && x.Status.Value == LeadType.Callback).Count();
-            model.Last30TotalDoNotContact = leads.Where(x => x.Status.HasValue && x.Status.Value == LeadType.DoNotContact).Count();
+            model.Last30TotalEmailed = _leadService.Total(new LeadFilterOptions() { Type = LeadType.Emailed });
+            model.Last30TotalNoAnswer = _leadService.Total(new LeadFilterOptions() { Type = LeadType.NoAnswer });
+            model.Last30TotalNotInterested = _leadService.Total(new LeadFilterOptions() { Type = LeadType.NotInterested });
+            model.Last30TotalCallback = _leadService.Total(new LeadFilterOptions() { Type = LeadType.Callback });
+            model.Last30TotalDoNotContact = _leadService.Total(new LeadFilterOptions() { Type = LeadType.DoNotContact });
 
-            model.Last30TotalWon = sales.Where(x => x.Status.Value == SaleType.Won && x.CreatedDate > (DateTime.Now - TimeSpan.FromDays(30))).Count();
-            model.Last30TotalLost = sales.Where(x => x.Status.Value == SaleType.Lost && x.CreatedDate > (DateTime.Now - TimeSpan.FromDays(30))).Count();
+            model.Last30TotalWon = _saleService.Total(new SaleFilterOptions() { Status = SaleType.Won, StartDate = (DateTime.Now - TimeSpan.FromDays(30)) });
+            model.Last30TotalLost = _saleService.Total(new SaleFilterOptions() { Status = SaleType.Lost, StartDate = (DateTime.Now - TimeSpan.FromDays(30)) });
 
             model.Tasks = _taskService.GetAll();
-            model.Activities = _activityService.GetAll().Take(6).ToList();
+            model.Activities = _activityService.GetAll(new PagingSettings() { PageCount = 6, PageIndex = 1 }).ToList();
 
             return View("Index", model);
         }

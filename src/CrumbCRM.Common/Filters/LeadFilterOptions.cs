@@ -8,12 +8,18 @@ namespace CrumbCRM.Filters
 {
     public class LeadFilterOptions
     {
-        public LeadType? Status { get; set; }
+        public LeadType? Type { get; set; }
 
         public string Order { get; set; }
 
         public List<object> Campaigns { get; set; }
 
         public List<object> Tags { get; set; }
+
+        public DateTime? StartDate { get; set; }
+
+        public DateTime? EndDate { get; set; }
+
+        public string SearchTerm { get; set; }
     }
 }

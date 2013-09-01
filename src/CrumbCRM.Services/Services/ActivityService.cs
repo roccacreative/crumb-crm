@@ -23,9 +23,9 @@ namespace CrumbCRM.Services
             return Repository.GetByID(id);
         }
 
-        public List<Activity> GetAll()
+        public List<Activity> GetAll(PagingSettings paging = null)
         {
-            return Repository.GetAll();
+            return Repository.GetAll(paging);
         }
 
         public List<Activity> GetByType(AreaType type)

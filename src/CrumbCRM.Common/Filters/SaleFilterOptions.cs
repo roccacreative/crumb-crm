@@ -15,5 +15,13 @@ namespace CrumbCRM.Filters
         public List<object> Campaigns { get; set; }
 
         public List<object> Tags { get; set; }
+
+        public bool IsQualified { get; set; }
+
+        public DateTime? StartDate { get; set; }
+
+        public DateTime? EndDate { get; set; }
+
+        public string SearchTerm { get; set; }
     }
 }

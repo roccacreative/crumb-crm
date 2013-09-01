@@ -1,4 +1,5 @@
-﻿using CrumbCRM.Data.Entity.Model;
+﻿using CreativeCRM.Filters;
+using CrumbCRM.Data.Entity.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,20 @@ namespace CrumbCRM.Data.Entity.Entities
             return Context.Campaign.FirstOrDefault(c => c.ID == id);
         }
 
-        public List<Campaign> GetAll()
+        public List<Campaign> GetAll(CampaignFilterOptions options = null)
         {
-            return Context.Campaign.Where(c => !c.Deleted.HasValue).ToList();
+            var query = Context.Campaign.Where(c => !c.Deleted.HasValue);
+
+            if (options != null)
+            {
+                if(!string.IsNullOrEmpty(options.SearchTerm))
+                {
+                    query = query.Where(x => (!string.IsNullOrEmpty(x.Name) && x.Name.Contains(options.SearchTerm)) ||
+                        (!string.IsNullOrEmpty(x.Description) && x.Description.Contains(options.SearchTerm)));
+                }
+            }
+
+            return query.ToList();
         }
 
         public int Save(Campaign campaign)

@@ -84,6 +84,13 @@ namespace CrumbCRM.Data.Entity.Entities
                     var ids = options.Tags.Select(c => ((Tag)c).ID);
                     sales = sales.Where(l => l.Tags.Where(t => ids.Contains(t.TagID)).Count() > 0);
                 }
+
+                if (!string.IsNullOrEmpty(options.SearchTerm))
+                {
+                    sales = sales.Where(x => (!string.IsNullOrEmpty(x.Person.FirstName) && x.Person.FirstName.Contains(options.SearchTerm)) ||
+                                                    (!string.IsNullOrEmpty(x.Person.LastName) && x.Person.LastName.Contains(options.SearchTerm)) ||
+                                                    (!string.IsNullOrEmpty(x.JobTitle) && x.JobTitle.Contains(options.SearchTerm)));
+                }
             }
 
             if (paging != null)
@@ -132,6 +139,12 @@ namespace CrumbCRM.Data.Entity.Entities
         public int Total(Filters.SaleFilterOptions options)
         {
             return QuerySales(options).Count();
+        }
+
+
+        public decimal Sum(Filters.SaleFilterOptions options)
+        {
+            return QuerySales(options).Sum(s => (decimal?)s.Value) ?? 0;
         }
     }
 }

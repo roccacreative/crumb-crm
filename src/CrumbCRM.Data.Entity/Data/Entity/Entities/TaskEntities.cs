@@ -72,6 +72,13 @@ namespace CrumbCRM.Data.Entity.Entities
 
                 if (options.EndDate.HasValue)
                     tasks = tasks.Where(t => t.DueDate.HasValue && t.DueDate.Value <= options.EndDate.Value);
+
+                if (options.Area.HasValue)
+                    tasks = tasks.Where(t => t.AreaType == options.Area.Value);
+
+                if (options.AssignedID.HasValue)
+                    tasks = tasks.Where(t => t.AssignedByID == options.AssignedID.Value);
+
             }
             if (paging != null)
             {

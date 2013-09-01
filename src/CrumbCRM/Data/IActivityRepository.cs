@@ -10,7 +10,7 @@ namespace CrumbCRM.Data
     public interface IActivityRepository : IDisposable
     {
         Activity GetByID(int id);
-        List<Activity> GetAll();
+        List<Activity> GetAll(PagingSettings paging);
         List<Activity> GetByType(AreaType type);
         int Save(Activity activity);
     }

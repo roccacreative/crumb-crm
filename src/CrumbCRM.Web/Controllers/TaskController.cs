@@ -171,12 +171,12 @@ namespace CrumbCRM.Web.Controllers
             if (String.IsNullOrEmpty(itemId.ToString()))
             {
                 //get all tasks for this user
-                model = _taskService.GetAll().Where(x => x.AssignedID == userId).Take(5).ToList();
+                model = _taskService.GetAll(new TaskFilterOptions() { AssignedID = userId }, new PagingSettings() { PageCount = 5, PageIndex = 1}).ToList();
             }
             else
             {
                 //get tasks for a specific item (lead or sale)
-                model = _taskService.GetAll().Where(x => x.AssignedID == userId && x.AreaType == areaType && x.ItemID == itemId).Take(5).ToList();
+                model = _taskService.GetAll(new TaskFilterOptions() { AssignedID = userId, Area = areaType }, new PagingSettings() { PageCount = 5, PageIndex = 1 }).ToList();
             }
 
             ViewBag.Detail = detail;

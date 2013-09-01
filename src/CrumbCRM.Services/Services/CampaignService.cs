@@ -1,4 +1,5 @@
-﻿using CrumbCRM.Data;
+﻿using CreativeCRM.Filters;
+using CrumbCRM.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace CrumbCRM.Services
             return Repository.GetByID(id);
         }
 
-        public List<Campaign> GetAll()
+        public List<Campaign> GetAll(CampaignFilterOptions options = null)
         {
             return Repository.GetAll();
         }

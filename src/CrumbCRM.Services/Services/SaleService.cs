@@ -43,5 +43,11 @@ namespace CrumbCRM.Services
         {
             return Repository.Total(options);
         }
+
+
+        public decimal Sum(Filters.SaleFilterOptions options)
+        {
+            return Repository.Sum(options);
+        }
     }
 }

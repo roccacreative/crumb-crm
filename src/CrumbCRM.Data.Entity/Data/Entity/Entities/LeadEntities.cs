@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CrumbCRM.Data.Entity.Model;
 using CrumbCRM.Services;
 using CrumbCRM.Data.Entity.Extensions;
+using CrumbCRM.Filters;
 
 namespace CrumbCRM.Data.Entity.Entities
 {
@@ -54,7 +55,7 @@ namespace CrumbCRM.Data.Entity.Entities
 
         private IQueryable<Lead> QueryLeads(Filters.LeadFilterOptions options, PagingSettings paging = null)
         {
-            var Leads = Context.Lead
+            var leads = Context.Lead
                 .Include("Company")
                 .Include("OwnerUser")
                 .Include("Tags")
@@ -63,33 +64,46 @@ namespace CrumbCRM.Data.Entity.Entities
 
             if (options != null)
             {
-                if (options.Status.HasValue)
-                    Leads = Leads.Where(c => c.Status == options.Status.Value);
+                if (options.Type.HasValue)
+                    leads = leads.Where(c => c.Status == options.Type.Value);
 
                 if (options.Order == "desc")
                 {
-                    Leads = Leads.OrderByDescending(x => x.CreatedDate);
+                    leads = leads.OrderByDescending(x => x.CreatedDate);
                 }
 
                 if (options.Campaigns != null)
                 {
                     var ids = options.Campaigns.Select(c => ((Campaign)c).ID).ToList();
-                    Leads = Leads.Where(l => l.CampaignID.HasValue && ids.Contains(l.CampaignID.Value));
+                    leads = leads.Where(l => l.CampaignID.HasValue && ids.Contains(l.CampaignID.Value));
                 }
 
                 if (options.Tags != null)
                 {
                     var ids = options.Tags.Select(c => ((Tag)c).ID);
-                    Leads = Leads.Where(l => l.Tags.Where(t => ids.Contains(t.TagID)).Count() > 0);
+                    leads = leads.Where(l => l.Tags.Where(t => ids.Contains(t.TagID)).Count() > 0);
+                }
+
+                if (options.StartDate.HasValue)
+                    leads = leads.Where(x => x.CreatedDate > options.StartDate.Value);
+
+                if (options.EndDate.HasValue)
+                    leads = leads.Where(x => x.CreatedDate < options.EndDate.Value);
+
+                if (!string.IsNullOrEmpty(options.SearchTerm))
+                {
+                    leads = leads.Where(x => (!string.IsNullOrEmpty(x.FirstName) && x.FirstName.Contains(options.SearchTerm)) ||
+                                                    (!string.IsNullOrEmpty(x.LastName) && x.LastName.Contains(options.SearchTerm)) ||
+                                                    (!string.IsNullOrEmpty(x.JobTitle) && x.JobTitle.Contains(options.SearchTerm)));
                 }
             }
 
             if (paging != null)
             {
-                Leads = Leads.Distinct().OrderByDescending(l=>l.CreatedDate).ToPagedQueryable(paging);
+                leads = leads.Distinct().OrderByDescending(l => l.CreatedDate).ToPagedQueryable(paging);
             }
 
-            return Leads;
+            return leads;
         }
 
         public bool Delete(Lead Lead) {

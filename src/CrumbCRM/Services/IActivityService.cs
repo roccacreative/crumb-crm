@@ -10,7 +10,7 @@ namespace CrumbCRM.Services
     public interface IActivityService
     {
         Activity GetByID(int id);
-        List<Activity> GetAll();
+        List<Activity> GetAll(PagingSettings paging = null);
         List<Activity> GetByType(AreaType type);
         int Save(Activity activity);
         int Create(string description, AreaType type, string userName = null, int? itemId = null); 

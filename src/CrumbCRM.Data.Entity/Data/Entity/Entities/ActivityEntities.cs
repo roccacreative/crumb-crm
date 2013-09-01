@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CrumbCRM.Data.Entity.Extensions;
 
 namespace CrumbCRM.Data.Entity.Entities
 {
@@ -16,9 +17,20 @@ namespace CrumbCRM.Data.Entity.Entities
             return Context.Activity.FirstOrDefault(a => a.ID == id);
         }
 
-        public List<Activity> GetAll()
+        public List<Activity> GetAll(PagingSettings paging = null)
         {
-            return Context.Activity.Include("User").OrderByDescending(a => a.ActivityDate).ToList();
+            var query = Context.Activity
+                .Include("User")
+                .OrderByDescending(a => a.ActivityDate)
+                .AsQueryable();
+
+            if (paging != null)
+            {
+                query = query.ToPagedQueryable(paging);
+            }
+
+            return query.ToList();
+
         }
 
         public List<Activity> GetByType(AreaType type)

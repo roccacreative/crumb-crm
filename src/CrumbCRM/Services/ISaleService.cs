@@ -18,5 +18,7 @@ namespace CrumbCRM.Services
         bool AssignTag(Sale sale, Tag tag);
 
         int Total(SaleFilterOptions options);
+
+        decimal Sum(SaleFilterOptions saleFilterOptions);
     }
 }

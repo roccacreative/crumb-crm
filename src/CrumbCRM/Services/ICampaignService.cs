@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CreativeCRM.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace CrumbCRM.Services
     public interface ICampaignService
     {
         Campaign GetByID(int id);
-        List<Campaign> GetAll();
+        List<Campaign> GetAll(CampaignFilterOptions options = null);
         int Save(Campaign campaign);
     }
 }

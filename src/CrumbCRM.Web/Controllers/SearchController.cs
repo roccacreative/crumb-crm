@@ -11,6 +11,7 @@ using CrumbCRM.Web.Filters;
 using CrumbCRM.Web.Models;
 using CrumbCRM.Web.Helpers;
 using Newtonsoft.Json;
+using CreativeCRM.Filters;
 
 
 namespace CrumbCRM.Web.Controllers
@@ -81,17 +82,12 @@ namespace CrumbCRM.Web.Controllers
         /* search for leads/sales */
         private List<Lead> SearchLeads(string query)
         {
-            var leads = _leadService.GetAll().Where(x => (!string.IsNullOrEmpty(x.FirstName) && x.FirstName.Contains(query)) ||
-                                                    (!string.IsNullOrEmpty(x.LastName) && x.LastName.Contains(query)) ||
-                                                    (!string.IsNullOrEmpty(x.JobTitle) && x.JobTitle.Contains(query))
-                                                    ).ToList();
+            var leads = _leadService.GetAll(new LeadFilterOptions() { SearchTerm = query }).ToList();
             return leads;
         }
         private List<Sale> SearchSales(string query)
         {
-            var sales = _saleService.GetAll().Where(x => (!string.IsNullOrEmpty(x.Person.FirstName) && x.Person.FirstName.Contains(query)) ||
-                                                    (!string.IsNullOrEmpty(x.Person.LastName) && x.Person.LastName.Contains(query)) || 
-                                                    (!string.IsNullOrEmpty(x.JobTitle) && x.JobTitle.Contains(query))).ToList();
+            var sales = _saleService.GetAll(new SaleFilterOptions() { SearchTerm = query }).ToList();
             return sales;
         }
 
@@ -99,38 +95,31 @@ namespace CrumbCRM.Web.Controllers
 
         private List<Lead> SearchTagsLeads(string query)
         {
-            List<Tag> tags = _tagService.GetAll().Where(x => x.Name.Contains(query)).ToList();
+            List<Tag> tags = _tagService.GetAll(new TagFilterOptions() { SearchTerm = query }).ToList();
             List<Lead> leads = _leadService.GetAll(new LeadFilterOptions() { Tags = tags.ToList<object>() });
             return leads;
-
         }
+
         private List<Sale> SearchTagsSales(string query)
         {
-            List<Tag> tags = _tagService.GetAll().Where(x => x.Name.Contains(query)).ToList();
+            List<Tag> tags = _tagService.GetAll(new TagFilterOptions() { SearchTerm = query }).ToList();
             List<Sale> sales = _saleService.GetAll(new SaleFilterOptions() { Tags = tags.ToList<object>() });
             return sales;
-
         }
-
-        /* search for leads/sales by campaign */
 
         private List<Lead> SearchCampaignsLeads(string query)
         {
-            List<Campaign> campaigns = _campaignService.GetAll().Where(x => (!string.IsNullOrEmpty(x.Name) && x.Name.Contains(query)) ||
-                                                                       (!string.IsNullOrEmpty(x.Description) && x.Description.Contains(query))
-                                                                       ).ToList();
+            List<Campaign> campaigns = _campaignService.GetAll(new CampaignFilterOptions() { SearchTerm = query }).ToList();
             List<Lead> leads = _leadService.GetAll(new LeadFilterOptions() { Campaigns = campaigns.ToList<object>() });
+         
             return leads;
-
         }
         private List<Sale> SearchCampaignsSales(string query)
         {
-            List<Campaign> campaigns = _campaignService.GetAll().Where(x => (!string.IsNullOrEmpty(x.Name) && x.Name.Contains(query)) ||
-                                                                       (!string.IsNullOrEmpty(x.Description) && x.Description.Contains(query))
-                                                                       ).ToList();
+            List<Campaign> campaigns = _campaignService.GetAll(new CampaignFilterOptions() { SearchTerm = query }).ToList();
             List<Sale> sales = _saleService.GetAll(new SaleFilterOptions() { Campaigns = campaigns.ToList<object>() });
+            
             return sales;
-
         }
 
 

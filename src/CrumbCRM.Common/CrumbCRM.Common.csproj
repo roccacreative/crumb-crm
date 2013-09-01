@@ -58,6 +58,7 @@
     <Compile Include="Enums\LeadType.cs" />
     <Compile Include="Enums\ItemType.cs" />
     <Compile Include="Enums\StatusType.cs" />
+    <Compile Include="Filters\CampaignFilterOptions.cs" />
     <Compile Include="Filters\ContactFilterOptions.cs" />
     <Compile Include="Filters\InvoiceItemFilterOptions.cs" />
     <Compile Include="Filters\QuoteItemFilterOptions.cs" />
