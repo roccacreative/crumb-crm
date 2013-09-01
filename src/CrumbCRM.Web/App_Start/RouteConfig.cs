@@ -27,9 +27,15 @@ namespace CrumbCRM.Web
             );
 
             routes.MapRouteLowercase(
-                name: "OrderLists",
-                url: "{controller}s/{order}",
-                defaults: new { controller = "Home", action = "Index", order = UrlParameter.Optional }
+                name: "OrderingDesc",
+                url: "{controller}/desc",
+                defaults: new { controller = "Contacts", action = "Index", order = UrlParameter.Optional }
+            );
+
+            routes.MapRouteLowercase(
+                name: "OrderingAsc",
+                url: "{controller}/asc",
+                defaults: new { controller = "Contacts", action = "Index", order = UrlParameter.Optional }
             );
 
             routes.MapRouteLowercase(
