@@ -5,7 +5,7 @@
 
 <h1>Add contact<a href="/contact" class="btn-back">Back</a></h1>
 <div class="width-wide left">
-    @using (Html.BeginForm("Add", "Contact", FormMethod.Post, new { @class = "box" }))
+    @using (Html.BeginForm("Add", "Contacts", FormMethod.Post, new { @class = "box" }))
     {
         @Html.HiddenFor(c => c.ID)
         @Html.Hidden("Type", CrumbCRM.ContactType.Person)
